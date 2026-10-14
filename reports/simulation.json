@@ -1,0 +1,33 @@
+{
+  "seed": 20261010,
+  "simulations": 10000,
+  "wins": {
+    "ACT": 713,
+    "RESET": 1150,
+    "SOCIAL": 1163,
+    "LUCK": 1900,
+    "THINK": 795,
+    "SAVE": 606
+  },
+  "winRatios": {
+    "ACT": 0.0713,
+    "RESET": 0.115,
+    "SOCIAL": 0.1163,
+    "LUCK": 0.19,
+    "THINK": 0.0795,
+    "SAVE": 0.0606
+  },
+  "statuses": {
+    "single": 6327,
+    "tie": 401,
+    "mixed": 435,
+    "insufficient": 2837
+  },
+  "statusRatios": {
+    "single": 0.6327,
+    "tie": 0.0401,
+    "mixed": 0.0435,
+    "insufficient": 0.2837
+  },
+  "note": "均匀随机选择只检查算法结构，不代表真实人群分布。规则为待校准试行配置。"
+}

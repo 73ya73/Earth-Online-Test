@@ -1,0 +1,3 @@
+export const STORAGE_KEY='earth-recharge-pilot-1';
+export function restore(questions:any[]){try{const s=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(!s||s.version!==1)return null;const answers:Record<string,string>={};for(const q of questions){if(q.options.some((o:any)=>o.optionId===s.answers?.[q.questionId]))answers[q.questionId]=s.answers[q.questionId];}return {answers,index:Math.min(questions.length-1,Math.max(0,Number.isInteger(s.index)?s.index:0)),page:s.page==='result'&&Object.keys(answers).length===questions.length?'result':'quiz'};}catch{return null;}}
+export function persist(answers:Record<string,string>,index:number,page:string){try{localStorage.setItem(STORAGE_KEY,JSON.stringify({version:1,answers,index,page}));}catch{}}

@@ -1,0 +1,50 @@
+{
+  "questions": 12,
+  "options": 60,
+  "optionCounts": [
+    4,
+    6,
+    4,
+    5,
+    5,
+    5,
+    4,
+    5,
+    7,
+    5,
+    5,
+    5
+  ],
+  "fields": [
+    "ACT",
+    "RESET",
+    "SOCIAL",
+    "LUCK",
+    "THINK",
+    "SAVE"
+  ],
+  "theoreticalMaxima": {
+    "ACT": 5,
+    "RESET": 6,
+    "SOCIAL": 8,
+    "LUCK": 8,
+    "THINK": 6,
+    "SAVE": 5
+  },
+  "evidenceQuestions": {
+    "ACT": 3,
+    "RESET": 4,
+    "SOCIAL": 4,
+    "LUCK": 4,
+    "THINK": 3,
+    "SAVE": 3
+  },
+  "undefinedScoreCells": 337,
+  "warnings": [
+    "空白分数保留为 null；仅累加明确数字，不为 null 赋分。空白含义仍需数据作者确认。",
+    "Q9-D 标签 T02 暂停休整，明确分数 THINK=2；按原表保留。",
+    "Q1-Q3 没有行为标签，保留 null，不自行编造。",
+    "原文 REST/RESET 与 Excel Reset 统一为 RESET；Lucky 映射为 LUCK。",
+    "候选规则待用户研究校准：归一化得分、至少两道正分证据、并列共同展示、差距不超过 0.1 展示混合倾向。"
+  ]
+}

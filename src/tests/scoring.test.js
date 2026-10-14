@@ -1,0 +1,18 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {calculate,theoretical,KEYS} from '../scoring/engine.js';
+const qs=JSON.parse(fs.readFileSync(new URL('../data/questions.json',import.meta.url),'utf8'));
+test('12 questions / 60 exact options / six mechanisms',()=>{assert.equal(qs.length,12);assert.equal(qs.flatMap(q=>q.options).length,60);assert.deepEqual(qs.map(q=>q.options.length),[4,6,4,5,5,5,4,5,7,5,5,5]);assert.equal(KEYS.includes('PLAY'),false);for(const q of qs)for(const o of q.options){assert.equal(o.questionId,q.questionId);assert.equal(o.answerNature,q.answerNature);assert.deepEqual(Object.keys(o.scores),KEYS);}});
+test('theoretical score maxima',()=>assert.deepEqual(Object.fromEntries(Object.entries(theoretical(qs)).map(([k,v])=>[k,v.max])),{ACT:5,RESET:6,SOCIAL:8,LUCK:8,THINK:6,SAVE:5}));
+test('undefined scores remain null and add nothing',()=>{const r=calculate(qs,{Q6:'A',Q7:'B',Q8:'E',Q9:'B',Q11:'D'});assert.ok(Object.values(r.totals).every(x=>x===0));assert.equal(r.status,'insufficient');assert.equal(r.behavioralProfile['T08 反复确认'],1);assert.equal(qs[5].options[0].scores.ACT,null);});
+test('zero scores never receive inferred points',()=>{const copy=structuredClone(qs);copy[5].options[0].scores=Object.fromEntries(KEYS.map(k=>[k,0]));const r=calculate(copy,{Q6:'A'});assert.ok(Object.values(r.totals).every(x=>x===0));});
+test('disabled options preserve tags and context without scoring',()=>{const r=calculate(qs,{Q5:'D',Q10:'C',Q12:'A'});assert.ok(Object.values(r.totals).every(x=>x===0));assert.equal(r.behavioralProfile['T04 象征仪式'],1);assert.equal(r.contextProfile.length,3);});
+test('Q9 D explicitly scores THINK despite RESET behavior tag',()=>{const r=calculate(qs,{Q9:'D'});assert.equal(r.totals.THINK,2);assert.equal(r.totals.RESET,0);assert.equal(r.behavioralProfile['T02 暂停休整'],1);});
+test('tags cannot change the ranking',()=>{const answers={Q4:'D',Q6:'D',Q8:'A',Q9:'E'};const copy=structuredClone(qs);copy.forEach(q=>q.options.forEach(o=>o.behaviorTag='T01 主动应对'));assert.deepEqual(calculate(copy,answers).totals,calculate(qs,answers).totals);assert.equal(calculate(copy,answers).primary,'LUCK');});
+test('modifying an answer recalculates without accumulation',()=>{assert.equal(calculate(qs,{Q4:'A'}).totals.ACT,2);const r=calculate(qs,{Q4:'B'});assert.equal(r.totals.ACT,0);assert.equal(r.totals.RESET,2);});
+test('single positive question does not force a personality',()=>assert.equal(calculate(qs,{Q4:'D'}).status,'insufficient'));
+test('tie is reproducible and never selects arbitrary primary',()=>{const r=calculate(qs,{Q4:'A',Q7:'C',Q8:'D',Q11:'B'});assert.equal(r.status,'tie');assert.equal(r.primary,null);assert.deepEqual(new Set(r.candidates.map(x=>x.key)),new Set(['ACT','SAVE']));});
+test('near ties expose a mixed result',()=>{const custom=[{questionId:'X',scoringEnabled:true,options:[{optionId:'A',scoringEnabled:true,scores:{ACT:10,RESET:9,SOCIAL:0,LUCK:0,THINK:0,SAVE:0}},{optionId:'B',scoringEnabled:true,scores:{ACT:0,RESET:10,SOCIAL:0,LUCK:0,THINK:0,SAVE:0}}]}];assert.equal(calculate(custom,{X:'A'},{minEvidence:1,nearTieGap:.1,epsilon:1e-9}).status,'mixed');});
+test('all six mechanisms have a unique candidate path',()=>{for(const k of KEYS){const answers={};for(const q of qs){const o=[...q.options].sort((a,b)=>(b.scores[k]||0)-(a.scores[k]||0))[0];answers[q.questionId]=o.optionId;}assert.equal(calculate(qs,answers).primary,k);}});
+test('clear answers resets all scoring',()=>{assert.equal(calculate(qs,{}).status,'insufficient');assert.equal(calculate(qs,{}).selections.length,0);});

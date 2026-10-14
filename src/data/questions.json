@@ -1,0 +1,1118 @@
+[
+  {
+    "questionId": "Q1",
+    "text": "Q1 你的地球 Online 账号，目前处于哪个版本？",
+    "scoringEnabled": false,
+    "answerNature": "背景",
+    "options": [
+      {
+        "questionId": "Q1",
+        "optionId": "A",
+        "text": "A. 新手村探索版",
+        "answerNature": "背景",
+        "behaviorTag": null,
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 3
+      },
+      {
+        "questionId": "Q1",
+        "optionId": "B",
+        "text": "B. 主线任务推进版",
+        "answerNature": "背景",
+        "behaviorTag": null,
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 4
+      },
+      {
+        "questionId": "Q1",
+        "optionId": "C",
+        "text": "C. 开放世界自由版",
+        "answerNature": "背景",
+        "behaviorTag": null,
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 5
+      },
+      {
+        "questionId": "Q1",
+        "optionId": "D",
+        "text": "D. 人生版本更新中",
+        "answerNature": "背景",
+        "behaviorTag": null,
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 6
+      }
+    ]
+  },
+  {
+    "questionId": "Q2",
+    "text": "Q2 在这款开放世界游戏里，目前卡在了哪个副本？",
+    "scoringEnabled": false,
+    "answerNature": "背景",
+    "options": [
+      {
+        "questionId": "Q2",
+        "optionId": "A",
+        "text": "A. 论文作业无限刷新本",
+        "answerNature": "背景",
+        "behaviorTag": null,
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 9
+      },
+      {
+        "questionId": "Q2",
+        "optionId": "B",
+        "text": "B. 打工人自由时间消失本",
+        "answerNature": "背景",
+        "behaviorTag": null,
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 10
+      },
+      {
+        "questionId": "Q2",
+        "optionId": "C",
+        "text": "C. 桃花渡劫本",
+        "answerNature": "背景",
+        "behaviorTag": null,
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 11
+      },
+      {
+        "questionId": "Q2",
+        "optionId": "D",
+        "text": "D. 人生主线失踪本",
+        "answerNature": "背景",
+        "behaviorTag": null,
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 12
+      },
+      {
+        "questionId": "Q2",
+        "optionId": "E",
+        "text": "E. 健康打怪版",
+        "answerNature": "背景",
+        "behaviorTag": null,
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 13
+      },
+      {
+        "questionId": "Q2",
+        "optionId": "F",
+        "text": "F. 目前版本稳定，暂无重大Bug",
+        "answerNature": "背景",
+        "behaviorTag": null,
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 14
+      }
+    ]
+  },
+  {
+    "questionId": "Q3",
+    "text": "Q3 你最近的精神状态属于哪种运行模式？",
+    "scoringEnabled": false,
+    "answerNature": "状态",
+    "options": [
+      {
+        "questionId": "Q3",
+        "optionId": "A",
+        "text": "A. 低电量硬撑模式",
+        "answerNature": "状态",
+        "behaviorTag": null,
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 17
+      },
+      {
+        "questionId": "Q3",
+        "optionId": "B",
+        "text": "B. 后台过载模式",
+        "answerNature": "状态",
+        "behaviorTag": null,
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 18
+      },
+      {
+        "questionId": "Q3",
+        "optionId": "C",
+        "text": "C. 灵魂云游模式",
+        "answerNature": "状态",
+        "behaviorTag": null,
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 19
+      },
+      {
+        "questionId": "Q3",
+        "optionId": "D",
+        "text": "D. 稳定运行模式",
+        "answerNature": "状态",
+        "behaviorTag": null,
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 20
+      }
+    ]
+  },
+  {
+    "questionId": "Q4",
+    "text": "Q4 当游戏副本突然上难度，你会怎么接招？",
+    "scoringEnabled": true,
+    "answerNature": "行为",
+    "options": [
+      {
+        "questionId": "Q4",
+        "optionId": "A",
+        "text": "A. 正面开团",
+        "answerNature": "行为",
+        "behaviorTag": "T01 主动应对",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": 2,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 23
+      },
+      {
+        "questionId": "Q4",
+        "optionId": "B",
+        "text": "B. 战术性撤退",
+        "answerNature": "行为",
+        "behaviorTag": "T02 暂停休整",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": 2,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 24
+      },
+      {
+        "questionId": "Q4",
+        "optionId": "C",
+        "text": "C. 场外请求支援",
+        "answerNature": "行为",
+        "behaviorTag": "T03 社交支持",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": 2,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 25
+      },
+      {
+        "questionId": "Q4",
+        "optionId": "D",
+        "text": "D. 启动玄学技能",
+        "answerNature": "行为",
+        "behaviorTag": "T04 象征仪式",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": 2,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 26
+      },
+      {
+        "questionId": "Q4",
+        "optionId": "E",
+        "text": "E. 脑内模拟通关",
+        "answerNature": "行为",
+        "behaviorTag": "T05 分析预演",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": 2,
+          "SAVE": null
+        },
+        "sourceRow": 27
+      }
+    ]
+  },
+  {
+    "questionId": "Q5",
+    "text": "Q5 什么情况下，你会想看看宇宙提示？",
+    "scoringEnabled": false,
+    "answerNature": "需求",
+    "options": [
+      {
+        "questionId": "Q5",
+        "optionId": "A",
+        "text": "A. 走到人生十字路口时",
+        "answerNature": "需求",
+        "behaviorTag": "T10 寻求方向",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 30
+      },
+      {
+        "questionId": "Q5",
+        "optionId": "B",
+        "text": "B. 结果即将开奖时",
+        "answerNature": "需求",
+        "behaviorTag": "T08 反复确认",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 31
+      },
+      {
+        "questionId": "Q5",
+        "optionId": "C",
+        "text": "C. 水逆连环暴击时",
+        "answerNature": "需求",
+        "behaviorTag": "T10 寻求方向",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 32
+      },
+      {
+        "questionId": "Q5",
+        "optionId": "D",
+        "text": "D. 每日上线时",
+        "answerNature": "需求",
+        "behaviorTag": "T04 象征仪式",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 33
+      },
+      {
+        "questionId": "Q5",
+        "optionId": "E",
+        "text": "E. 宇宙免打扰",
+        "answerNature": "需求",
+        "behaviorTag": "T09 自主放下",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 34
+      }
+    ]
+  },
+  {
+    "questionId": "Q6",
+    "text": "Q6 你向宇宙投递了一份好运申请，系统显示「结果加载中」，接下来你会？",
+    "scoringEnabled": true,
+    "answerNature": "行为,态度",
+    "options": [
+      {
+        "questionId": "Q6",
+        "optionId": "A",
+        "text": "A. 反复刷新进度条",
+        "answerNature": "行为,态度",
+        "behaviorTag": "T08 反复确认",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 37
+      },
+      {
+        "questionId": "Q6",
+        "optionId": "B",
+        "text": "B. 切换其他频道",
+        "answerNature": "行为,态度",
+        "behaviorTag": "T06 转移注意力",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 38
+      },
+      {
+        "questionId": "Q6",
+        "optionId": "C",
+        "text": "C. 召唤场外援助",
+        "answerNature": "行为,态度",
+        "behaviorTag": "T03 社交支持",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": 2,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 39
+      },
+      {
+        "questionId": "Q6",
+        "optionId": "D",
+        "text": "D. 换上好运头像，转发好运帖子等待结果",
+        "answerNature": "行为,态度",
+        "behaviorTag": "T04 象征仪式",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": 2,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 40
+      },
+      {
+        "questionId": "Q6",
+        "optionId": "E",
+        "text": "E. 脑内开启结果预演模拟器",
+        "answerNature": "行为,态度",
+        "behaviorTag": "T05 分析预演",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": 2,
+          "SAVE": null
+        },
+        "sourceRow": 41
+      }
+    ]
+  },
+  {
+    "questionId": "Q7",
+    "text": "Q7 如果宇宙要给你的精神系统发一个小小的 Buff，你最希望是什么？",
+    "scoringEnabled": true,
+    "answerNature": "需求",
+    "options": [
+      {
+        "questionId": "Q7",
+        "optionId": "A",
+        "text": "A. 焦虑免疫Buff",
+        "answerNature": "需求",
+        "behaviorTag": "T11 情绪安定",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 44
+      },
+      {
+        "questionId": "Q7",
+        "optionId": "B",
+        "text": "B. 好运加成Buff",
+        "answerNature": "需求",
+        "behaviorTag": "T04 象征仪式",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 45
+      },
+      {
+        "questionId": "Q7",
+        "optionId": "C",
+        "text": "C. 行动力加成Buff",
+        "answerNature": "需求",
+        "behaviorTag": "T01 主动应对",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": 1,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 46
+      },
+      {
+        "questionId": "Q7",
+        "optionId": "D",
+        "text": "D. 快速回血Buff",
+        "answerNature": "需求",
+        "behaviorTag": "T02 暂停休整",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": 1,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 47
+      }
+    ]
+  },
+  {
+    "questionId": "Q8",
+    "text": "Q8 你刷到一条「接住这波好运，明天就有好事发生」，你的手比脑子快了一步，接下来你会？",
+    "scoringEnabled": true,
+    "answerNature": "情境,行为,态度",
+    "options": [
+      {
+        "questionId": "Q8",
+        "optionId": "A",
+        "text": "A. 先接为敬",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T04 象征仪式",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": 2,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 50
+      },
+      {
+        "questionId": "Q8",
+        "optionId": "B",
+        "text": "B. 锦鲤传播大使",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T04 象征仪式",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": 2,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 51
+      },
+      {
+        "questionId": "Q8",
+        "optionId": "C",
+        "text": "C. 评论区吃瓜群众",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T06 转移注意力",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 52
+      },
+      {
+        "questionId": "Q8",
+        "optionId": "D",
+        "text": "D. 电子好运收藏专家",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T07 经历留存",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": 1,
+          "THINK": null,
+          "SAVE": 1
+        },
+        "sourceRow": 53
+      },
+      {
+        "questionId": "Q8",
+        "optionId": "E",
+        "text": "E. 警惕防诈骗",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T12 不参与",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 54
+      }
+    ]
+  },
+  {
+    "questionId": "Q9",
+    "text": "Q9 当精神电量只剩 5%，你的灵魂通常会偷偷打开哪个回血外挂？",
+    "scoringEnabled": true,
+    "answerNature": "情境,需求,行为,态度",
+    "options": [
+      {
+        "questionId": "Q9",
+        "optionId": "A",
+        "text": "A. 物理进入睡眠模式",
+        "answerNature": "情境,需求,行为,态度",
+        "behaviorTag": "T02 暂停休整",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": 2,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 57
+      },
+      {
+        "questionId": "Q9",
+        "optionId": "B",
+        "text": "B. 食物多巴胺补给",
+        "answerNature": "情境,需求,行为,态度",
+        "behaviorTag": "T06 转移注意力",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 58
+      },
+      {
+        "questionId": "Q9",
+        "optionId": "C",
+        "text": "C. 召唤伙伴充电宝",
+        "answerNature": "情境,需求,行为,态度",
+        "behaviorTag": "T03 社交支持",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": 2,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 59
+      },
+      {
+        "questionId": "Q9",
+        "optionId": "D",
+        "text": "D. 独处一段时间",
+        "answerNature": "情境,需求,行为,态度",
+        "behaviorTag": "T02 暂停休整",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": 2,
+          "SAVE": null
+        },
+        "sourceRow": 60
+      },
+      {
+        "questionId": "Q9",
+        "optionId": "E",
+        "text": "E. 玄学续命模式",
+        "answerNature": "情境,需求,行为,态度",
+        "behaviorTag": "T04 象征仪式",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": 2,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 61
+      },
+      {
+        "questionId": "Q9",
+        "optionId": "F",
+        "text": "F. 分析解决方法",
+        "answerNature": "情境,需求,行为,态度",
+        "behaviorTag": "T01 主动应对",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": 2,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 62
+      },
+      {
+        "questionId": "Q9",
+        "optionId": "G",
+        "text": "G. 回忆过往经验",
+        "answerNature": "情境,需求,行为,态度",
+        "behaviorTag": "T07 经历留存",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": 2
+        },
+        "sourceRow": 63
+      }
+    ]
+  },
+  {
+    "questionId": "Q10",
+    "text": "Q10 如果好运可以实体化，你会怎么安置它？",
+    "scoringEnabled": false,
+    "answerNature": "情境,行为,态度",
+    "options": [
+      {
+        "questionId": "Q10",
+        "optionId": "A",
+        "text": "A. 随身携带",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T04 象征仪式",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 66
+      },
+      {
+        "questionId": "Q10",
+        "optionId": "B",
+        "text": "B. 设立幸运据点",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T04 象征仪式",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 67
+      },
+      {
+        "questionId": "Q10",
+        "optionId": "C",
+        "text": "C. 好运共享计划",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T03 社交支持",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 68
+      },
+      {
+        "questionId": "Q10",
+        "optionId": "D",
+        "text": "D. 随缘放养模式",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T09 自主放下",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 69
+      },
+      {
+        "questionId": "Q10",
+        "optionId": "E",
+        "text": "E. 收藏珍贵回忆",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T07 经历留存",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 70
+      }
+    ]
+  },
+  {
+    "questionId": "Q11",
+    "text": "Q11 你等了很久的消息终于到了，不管好坏，你最可能做的第一件事是什么？",
+    "scoringEnabled": true,
+    "answerNature": "情境,行为,态度",
+    "options": [
+      {
+        "questionId": "Q11",
+        "optionId": "A",
+        "text": "A. 开启全服广播",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T03 社交支持",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": 2,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 73
+      },
+      {
+        "questionId": "Q11",
+        "optionId": "B",
+        "text": "B. 进行赛后复盘",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T07 经历留存",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": 2
+        },
+        "sourceRow": 74
+      },
+      {
+        "questionId": "Q11",
+        "optionId": "C",
+        "text": "C. 先缓冲三分钟",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T02 暂停休整",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": 1,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 75
+      },
+      {
+        "questionId": "Q11",
+        "optionId": "D",
+        "text": "D. 给经历划句号",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T09 自主放下",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 76
+      },
+      {
+        "questionId": "Q11",
+        "optionId": "E",
+        "text": "E. 开启下一旅程",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T09 自主放下",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 77
+      }
+    ]
+  },
+  {
+    "questionId": "Q12",
+    "text": "Q12 如果人生可以存档，你最想留下什么？",
+    "scoringEnabled": false,
+    "answerNature": "情境,行为,态度",
+    "options": [
+      {
+        "questionId": "Q12",
+        "optionId": "A",
+        "text": "A. 高光时刻",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T07 经历留存",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 80
+      },
+      {
+        "questionId": "Q12",
+        "optionId": "B",
+        "text": "B. 成长经验包",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T07 经历留存",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 81
+      },
+      {
+        "questionId": "Q12",
+        "optionId": "C",
+        "text": "C. 情绪记忆碎片",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T07 经历留存",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 82
+      },
+      {
+        "questionId": "Q12",
+        "optionId": "D",
+        "text": "D. 重要人物图鉴",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T07 经历留存",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 83
+      },
+      {
+        "questionId": "Q12",
+        "optionId": "E",
+        "text": "E. 不留存档，轻装上阵",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T09 自主放下",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCK": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 84
+      }
+    ]
+  }
+]
