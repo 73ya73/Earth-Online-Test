@@ -2,6 +2,8 @@
 
 Earth Online · Recharge Personality Test。12 道中文单选题、60 个选项、六种回血机制。React + TypeScript + Vite；浏览器内运行，不需要数据库或付费 API。
 
+界面采用 Windows XP Luna 风格：原创蓝天草坡桌面、像素图标、安装向导、绿色分段进度条和用户属性结果面板。窗口可以最小化、最大化/还原，关闭后从桌面或任务栏恢复；这些操作不会清除回答。保存的 PNG 也沿用 XP 主题。所有原有题库、人格文案、计分和存档逻辑保持不变。改版检查记录见 reports/xp-redesign.md。
+
 ## 本地运行
 
 使用 Node.js 22.12 或更新版本，在项目目录执行 `npm ci`，然后 `npm run dev`。生产构建用 `npm run build`，本地查看构建用 `npm run preview`。先执行 `npm run build`，再执行 `npm test` 检查真实构建页面交互、计分和数据；执行 `npm run simulate` 生成 10,000 次固定种子模拟报告。
