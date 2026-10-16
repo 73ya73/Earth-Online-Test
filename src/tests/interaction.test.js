@@ -7,8 +7,9 @@ const questions=JSON.parse(fs.readFileSync(new URL('../data/questions.json',impo
 const personas=JSON.parse(fs.readFileSync(new URL('../data/personas.json',import.meta.url),'utf8'));
 const dist=new URL('../../dist/',import.meta.url);
 const html=fs.readFileSync(new URL('index.html',dist),'utf8');
-const asset=html.match(/src="([^" ]+\.js)"/)[1].replace(/^\.\//,'');
-const script=fs.readFileSync(new URL(asset,dist),'utf8');
+const asset=html.match(/src="([^" ]+\.js)"/)[1];
+// The build may use a Pages repository prefix; the local bundle still lives in dist/assets.
+const script=fs.readFileSync(new URL(`assets/${asset.split('/').pop()}`,dist),'utf8');
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 async function setup(storage,legacy=false){
  const dom=new JSDOM('<!doctype html><html><body><div id="root"></div></body></html>',{url:'http://localhost/',runScripts:'outside-only',pretendToBeVisual:true});

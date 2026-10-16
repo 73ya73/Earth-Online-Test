@@ -2,3 +2,35 @@ node_modules/
 dist/
 *.tar.gz
 *.zip
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+id_rsa*
+id_ed25519*
+.ssh/
+.aws/
+.credentials/
+credentials.json
+service-account*.json
+service_account*.json
+secrets.json
+
+# Local tool state, logs and operating-system files
+.sites-runtime/
+.sites-checkout/
+.sites-checkout-*/
+.codex/
+.agents/
+.npmrc
+*.log
+.DS_Store
+Thumbs.db
