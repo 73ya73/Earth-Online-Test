@@ -1,0 +1,149 @@
+[
+  {
+    "questionId": "Q2",
+    "edits": [
+      {
+        "optionId": "F",
+        "field": "text",
+        "before": "F. 目前版本稳定，暂无重大Bug",
+        "after": "F. 多重副本参与中"
+      },
+      {
+        "optionId": "G",
+        "added": "G. 目前版本稳定，暂无重大Bug"
+      }
+    ]
+  },
+  {
+    "questionId": "Q6",
+    "edits": [
+      {
+        "optionId": "B",
+        "field": "text",
+        "before": "B. 切换其他频道",
+        "after": "B. 切换频道转移注意力"
+      },
+      {
+        "optionId": "C",
+        "field": "text",
+        "before": "C. 召唤场外援助",
+        "after": "C. 进入伙伴聊天频道"
+      },
+      {
+        "optionId": "E",
+        "field": "text",
+        "before": "E. 脑内开启结果预演模拟器",
+        "after": "E. 先预演结果的对应方法"
+      }
+    ]
+  },
+  {
+    "questionId": "Q8",
+    "edits": [
+      {
+        "optionId": "E",
+        "field": "text",
+        "before": "E. 警惕防诈骗",
+        "after": "E. 已读划走"
+      }
+    ]
+  },
+  {
+    "questionId": "Q10",
+    "edits": [
+      {
+        "optionId": "A",
+        "field": "text",
+        "before": "A. 随身携带",
+        "after": "A. 随身携带幸运值"
+      },
+      {
+        "optionId": "B",
+        "field": "text",
+        "before": "B. 设立幸运据点",
+        "after": "B. 设立固定放置据点"
+      },
+      {
+        "optionId": "C",
+        "field": "text",
+        "before": "C. 好运共享计划",
+        "after": "C. 赠给重要的人"
+      },
+      {
+        "optionId": "D",
+        "field": "text",
+        "before": "D. 随缘放养模式",
+        "after": "D. 放进收纳盒做纪念"
+      },
+      {
+        "optionId": "D",
+        "field": "behaviorTag",
+        "before": "T09 自主放下",
+        "after": "T04 象征仪式"
+      },
+      {
+        "optionId": "E",
+        "field": "text",
+        "before": "E. 收藏珍贵回忆",
+        "after": "E. 拍照并分享"
+      },
+      {
+        "optionId": "E",
+        "field": "behaviorTag",
+        "before": "T07 经历留存",
+        "after": "T03 社交支持"
+      },
+      {
+        "optionId": "F",
+        "added": "F. 不刻意留存"
+      }
+    ]
+  },
+  {
+    "questionId": "Q11",
+    "edits": [
+      {
+        "optionId": "A",
+        "field": "text",
+        "before": "A. 开启全服广播",
+        "after": "A. 通知我的羁绊亲友"
+      }
+    ]
+  },
+  {
+    "questionId": "Q12",
+    "edits": [
+      {
+        "field": "question",
+        "before": "Q12 如果人生可以存档，你最想留下什么？",
+        "after": "Q12 如果每段地球Online经历都可以存档，你最想留下什么？"
+      },
+      {
+        "optionId": "A",
+        "field": "text",
+        "before": "A. 高光时刻",
+        "after": "A. 人生成就"
+      },
+      {
+        "optionId": "E",
+        "field": "text",
+        "before": "E. 不留存档，轻装上阵",
+        "after": "E. 温暖鼓励的声音"
+      },
+      {
+        "optionId": "E",
+        "field": "behaviorTag",
+        "before": "T09 自主放下",
+        "after": "T07 经历留存"
+      },
+      {
+        "optionId": "F",
+        "added": "F. 神级操作瞬间"
+      },
+      {
+        "optionId": "G",
+        "added": "G. 不留存档，继续奇遇"
+      }
+    ]
+  }
+]

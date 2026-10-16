@@ -1,5 +1,5 @@
-export const KEYS=['ACT','RESET','SOCIAL','LUCK','THINK','SAVE'];
-export const CONFIG={version:'pilot-1',calibrated:false,minEvidence:2,nearTieGap:0.1,epsilon:1e-9};
+export const KEYS=['ACT','RESET','SOCIAL','LUCKY','THINK','SAVE'];
+export const CONFIG={version:'pilot-1.1',calibrated:false,minEvidence:2,nearTieGap:0.1,epsilon:1e-9};
 export function theoretical(questions){
  return Object.fromEntries(KEYS.map(k=>[k,{max:questions.filter(q=>q.scoringEnabled).reduce((s,q)=>s+Math.max(0,...q.options.map(o=>typeof o.scores[k]==='number'?o.scores[k]:0)),0),questions:questions.filter(q=>q.scoringEnabled&&q.options.some(o=>typeof o.scores[k]==='number'&&o.scores[k]>0)).length}]));
 }
@@ -16,7 +16,8 @@ export function calculate(questions,answers,config=CONFIG){
  const ranking=KEYS.map(key=>({key,raw:totals[key],evidence:evidence[key],normalized:theory[key].max?totals[key]/theory[key].max:0})).filter(x=>x.evidence>=config.minEvidence&&x.raw>0).sort((a,b)=>b.normalized-a.normalized);
  const top=ranking[0];
  const tied=top?ranking.filter(x=>Math.abs(x.normalized-top.normalized)<=config.epsilon):[];
- const candidates=top?ranking.filter(x=>top.normalized-x.normalized<=config.nearTieGap+config.epsilon):[];
+ const candidates=tied.length>1?tied:top?ranking.filter(x=>top.normalized-x.normalized<=config.nearTieGap+config.epsilon):[];
  const status=!top?'insufficient':tied.length>1?'tie':candidates.length>1?'mixed':'single';
- return {totals,evidence,theory,ranking,candidates,status,primary:status==='single'?top.key:null,behavioralProfile,contextProfile,selections,config};
+ const reason=status==='insufficient'?(Object.values(totals).every(v=>v===0)?'all-zero':'low-evidence'):status;
+ return {totals,evidence,theory,ranking,candidates,status,reason,primary:status==='single'?top.key:null,behavioralProfile,contextProfile,selections,config};
 }

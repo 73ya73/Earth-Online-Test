@@ -16,7 +16,7 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
@@ -33,7 +33,7 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
@@ -50,7 +50,7 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
@@ -67,7 +67,7 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
@@ -92,7 +92,7 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
@@ -109,7 +109,7 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
@@ -126,7 +126,7 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
@@ -143,7 +143,7 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
@@ -160,7 +160,7 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
@@ -169,7 +169,7 @@
       {
         "questionId": "Q2",
         "optionId": "F",
-        "text": "F. 目前版本稳定，暂无重大Bug",
+        "text": "F. 多重副本参与中",
         "answerNature": "背景",
         "behaviorTag": null,
         "scoringEnabled": false,
@@ -177,11 +177,28 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
         "sourceRow": 14
+      },
+      {
+        "questionId": "Q2",
+        "optionId": "G",
+        "text": "G. 目前版本稳定，暂无重大Bug",
+        "answerNature": "背景",
+        "behaviorTag": null,
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 15
       }
     ]
   },
@@ -202,11 +219,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 17
+        "sourceRow": 18
       },
       {
         "questionId": "Q3",
@@ -219,11 +236,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 18
+        "sourceRow": 19
       },
       {
         "questionId": "Q3",
@@ -236,11 +253,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 19
+        "sourceRow": 20
       },
       {
         "questionId": "Q3",
@@ -253,11 +270,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 20
+        "sourceRow": 21
       }
     ]
   },
@@ -278,11 +295,11 @@
           "ACT": 2,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 23
+        "sourceRow": 24
       },
       {
         "questionId": "Q4",
@@ -295,11 +312,11 @@
           "ACT": null,
           "RESET": 2,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 24
+        "sourceRow": 25
       },
       {
         "questionId": "Q4",
@@ -312,11 +329,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": 2,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 25
+        "sourceRow": 26
       },
       {
         "questionId": "Q4",
@@ -329,11 +346,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": 2,
+          "LUCKY": 2,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 26
+        "sourceRow": 27
       },
       {
         "questionId": "Q4",
@@ -346,11 +363,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": 2,
           "SAVE": null
         },
-        "sourceRow": 27
+        "sourceRow": 28
       }
     ]
   },
@@ -371,11 +388,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 30
+        "sourceRow": 31
       },
       {
         "questionId": "Q5",
@@ -388,11 +405,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 31
+        "sourceRow": 32
       },
       {
         "questionId": "Q5",
@@ -405,11 +422,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 32
+        "sourceRow": 33
       },
       {
         "questionId": "Q5",
@@ -422,11 +439,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 33
+        "sourceRow": 34
       },
       {
         "questionId": "Q5",
@@ -439,11 +456,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 34
+        "sourceRow": 35
       }
     ]
   },
@@ -464,24 +481,7 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
-          "THINK": null,
-          "SAVE": null
-        },
-        "sourceRow": 37
-      },
-      {
-        "questionId": "Q6",
-        "optionId": "B",
-        "text": "B. 切换其他频道",
-        "answerNature": "行为,态度",
-        "behaviorTag": "T06 转移注意力",
-        "scoringEnabled": true,
-        "scores": {
-          "ACT": null,
-          "RESET": null,
-          "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
@@ -489,8 +489,25 @@
       },
       {
         "questionId": "Q6",
+        "optionId": "B",
+        "text": "B. 切换频道转移注意力",
+        "answerNature": "行为,态度",
+        "behaviorTag": "T06 转移注意力",
+        "scoringEnabled": true,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 39
+      },
+      {
+        "questionId": "Q6",
         "optionId": "C",
-        "text": "C. 召唤场外援助",
+        "text": "C. 进入伙伴聊天频道",
         "answerNature": "行为,态度",
         "behaviorTag": "T03 社交支持",
         "scoringEnabled": true,
@@ -498,11 +515,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": 2,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 39
+        "sourceRow": 40
       },
       {
         "questionId": "Q6",
@@ -515,16 +532,16 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": 2,
+          "LUCKY": 2,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 40
+        "sourceRow": 41
       },
       {
         "questionId": "Q6",
         "optionId": "E",
-        "text": "E. 脑内开启结果预演模拟器",
+        "text": "E. 先预演结果的对应方法",
         "answerNature": "行为,态度",
         "behaviorTag": "T05 分析预演",
         "scoringEnabled": true,
@@ -532,11 +549,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": 2,
           "SAVE": null
         },
-        "sourceRow": 41
+        "sourceRow": 42
       }
     ]
   },
@@ -557,11 +574,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 44
+        "sourceRow": 45
       },
       {
         "questionId": "Q7",
@@ -574,11 +591,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 45
+        "sourceRow": 46
       },
       {
         "questionId": "Q7",
@@ -591,11 +608,11 @@
           "ACT": 1,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 46
+        "sourceRow": 47
       },
       {
         "questionId": "Q7",
@@ -608,11 +625,11 @@
           "ACT": null,
           "RESET": 1,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 47
+        "sourceRow": 48
       }
     ]
   },
@@ -633,11 +650,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": 2,
+          "LUCKY": 2,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 50
+        "sourceRow": 51
       },
       {
         "questionId": "Q8",
@@ -650,11 +667,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": 2,
+          "LUCKY": 2,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 51
+        "sourceRow": 52
       },
       {
         "questionId": "Q8",
@@ -667,11 +684,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 52
+        "sourceRow": 53
       },
       {
         "questionId": "Q8",
@@ -684,16 +701,16 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": 1,
+          "LUCKY": 1,
           "THINK": null,
           "SAVE": 1
         },
-        "sourceRow": 53
+        "sourceRow": 54
       },
       {
         "questionId": "Q8",
         "optionId": "E",
-        "text": "E. 警惕防诈骗",
+        "text": "E. 已读划走",
         "answerNature": "情境,行为,态度",
         "behaviorTag": "T12 不参与",
         "scoringEnabled": true,
@@ -701,11 +718,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 54
+        "sourceRow": 55
       }
     ]
   },
@@ -726,11 +743,11 @@
           "ACT": null,
           "RESET": 2,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 57
+        "sourceRow": 58
       },
       {
         "questionId": "Q9",
@@ -743,11 +760,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 58
+        "sourceRow": 59
       },
       {
         "questionId": "Q9",
@@ -760,11 +777,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": 2,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 59
+        "sourceRow": 60
       },
       {
         "questionId": "Q9",
@@ -777,11 +794,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": 2,
           "SAVE": null
         },
-        "sourceRow": 60
+        "sourceRow": 61
       },
       {
         "questionId": "Q9",
@@ -794,11 +811,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": 2,
+          "LUCKY": 2,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 61
+        "sourceRow": 62
       },
       {
         "questionId": "Q9",
@@ -811,11 +828,11 @@
           "ACT": 2,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 62
+        "sourceRow": 63
       },
       {
         "questionId": "Q9",
@@ -828,11 +845,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": 2
         },
-        "sourceRow": 63
+        "sourceRow": 64
       }
     ]
   },
@@ -845,7 +862,7 @@
       {
         "questionId": "Q10",
         "optionId": "A",
-        "text": "A. 随身携带",
+        "text": "A. 随身携带幸运值",
         "answerNature": "情境,行为,态度",
         "behaviorTag": "T04 象征仪式",
         "scoringEnabled": false,
@@ -853,24 +870,7 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
-          "THINK": null,
-          "SAVE": null
-        },
-        "sourceRow": 66
-      },
-      {
-        "questionId": "Q10",
-        "optionId": "B",
-        "text": "B. 设立幸运据点",
-        "answerNature": "情境,行为,态度",
-        "behaviorTag": "T04 象征仪式",
-        "scoringEnabled": false,
-        "scores": {
-          "ACT": null,
-          "RESET": null,
-          "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
@@ -878,16 +878,16 @@
       },
       {
         "questionId": "Q10",
-        "optionId": "C",
-        "text": "C. 好运共享计划",
+        "optionId": "B",
+        "text": "B. 设立固定放置据点",
         "answerNature": "情境,行为,态度",
-        "behaviorTag": "T03 社交支持",
+        "behaviorTag": "T04 象征仪式",
         "scoringEnabled": false,
         "scores": {
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
@@ -895,16 +895,16 @@
       },
       {
         "questionId": "Q10",
-        "optionId": "D",
-        "text": "D. 随缘放养模式",
+        "optionId": "C",
+        "text": "C. 赠给重要的人",
         "answerNature": "情境,行为,态度",
-        "behaviorTag": "T09 自主放下",
+        "behaviorTag": "T03 社交支持",
         "scoringEnabled": false,
         "scores": {
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
@@ -912,20 +912,54 @@
       },
       {
         "questionId": "Q10",
-        "optionId": "E",
-        "text": "E. 收藏珍贵回忆",
+        "optionId": "D",
+        "text": "D. 放进收纳盒做纪念",
         "answerNature": "情境,行为,态度",
-        "behaviorTag": "T07 经历留存",
+        "behaviorTag": "T04 象征仪式",
         "scoringEnabled": false,
         "scores": {
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
         "sourceRow": 70
+      },
+      {
+        "questionId": "Q10",
+        "optionId": "E",
+        "text": "E. 拍照并分享",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T03 社交支持",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 71
+      },
+      {
+        "questionId": "Q10",
+        "optionId": "F",
+        "text": "F. 不刻意留存",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T12 不参与",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 72
       }
     ]
   },
@@ -938,7 +972,7 @@
       {
         "questionId": "Q11",
         "optionId": "A",
-        "text": "A. 开启全服广播",
+        "text": "A. 通知我的羁绊亲友",
         "answerNature": "情境,行为,态度",
         "behaviorTag": "T03 社交支持",
         "scoringEnabled": true,
@@ -946,11 +980,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": 2,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 73
+        "sourceRow": 75
       },
       {
         "questionId": "Q11",
@@ -963,11 +997,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": 2
         },
-        "sourceRow": 74
+        "sourceRow": 76
       },
       {
         "questionId": "Q11",
@@ -980,11 +1014,11 @@
           "ACT": null,
           "RESET": 1,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 75
+        "sourceRow": 77
       },
       {
         "questionId": "Q11",
@@ -997,11 +1031,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 76
+        "sourceRow": 78
       },
       {
         "questionId": "Q11",
@@ -1014,24 +1048,24 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 77
+        "sourceRow": 79
       }
     ]
   },
   {
     "questionId": "Q12",
-    "text": "Q12 如果人生可以存档，你最想留下什么？",
+    "text": "Q12 如果每段地球Online经历都可以存档，你最想留下什么？",
     "scoringEnabled": false,
     "answerNature": "情境,行为,态度",
     "options": [
       {
         "questionId": "Q12",
         "optionId": "A",
-        "text": "A. 高光时刻",
+        "text": "A. 人生成就",
         "answerNature": "情境,行为,态度",
         "behaviorTag": "T07 经历留存",
         "scoringEnabled": false,
@@ -1039,11 +1073,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 80
+        "sourceRow": 82
       },
       {
         "questionId": "Q12",
@@ -1056,11 +1090,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 81
+        "sourceRow": 83
       },
       {
         "questionId": "Q12",
@@ -1073,11 +1107,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 82
+        "sourceRow": 84
       },
       {
         "questionId": "Q12",
@@ -1090,16 +1124,50 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 83
+        "sourceRow": 85
       },
       {
         "questionId": "Q12",
         "optionId": "E",
-        "text": "E. 不留存档，轻装上阵",
+        "text": "E. 温暖鼓励的声音",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T07 经历留存",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 86
+      },
+      {
+        "questionId": "Q12",
+        "optionId": "F",
+        "text": "F. 神级操作瞬间",
+        "answerNature": "情境,行为,态度",
+        "behaviorTag": "T07 经历留存",
+        "scoringEnabled": false,
+        "scores": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "sourceRow": 87
+      },
+      {
+        "questionId": "Q12",
+        "optionId": "G",
+        "text": "G. 不留存档，继续奇遇",
         "answerNature": "情境,行为,态度",
         "behaviorTag": "T09 自主放下",
         "scoringEnabled": false,
@@ -1107,11 +1175,11 @@
           "ACT": null,
           "RESET": null,
           "SOCIAL": null,
-          "LUCK": null,
+          "LUCKY": null,
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 84
+        "sourceRow": 88
       }
     ]
   }

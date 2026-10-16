@@ -1,0 +1,36 @@
+import React,{useRef,useState} from 'react';
+import {personas} from '../data/personas';
+import {Artwork} from './Artwork';
+import {PixelIcon} from './PixelIcon';
+const tabs=[['general','常规','General'],['history','回答线索与记录','Answer History'],['reading','推荐阅读','Reading'],['scoring','计分说明','Scoring Info']];
+export function ResultProfile({result,questions,saving,onSave,onShare,onReset}:{result:any;questions:any[];saving:boolean;onSave:()=>void;onShare:()=>void;onReset:()=>void}){
+ const [tab,setTab]=useState('general');const buttons=useRef<(HTMLButtonElement|null)[]>([]);
+ const types:string[]=result.candidates.map((x:any)=>x.key);const p=result.primary?personas[result.primary]:null;
+ const insufficient=result.status==='insufficient';
+ const reason=result.reason==='all-zero'?'本次已选答案没有贡献任何已配置的数字分数，暂时没有人格得分可供比较。完整作答时 Q4 必定提供分数；你可以重新测试，或在计分说明中查看本次记录。':'本次有明确得分，但没有机制获得至少两道不同题目的正分支持。单个回答不足以稳定判断主要回血方式，因此暂不指定人格。';
+ function move(e:React.KeyboardEvent,i:number){let next=i;if(e.key==='ArrowRight')next=(i+1)%tabs.length;else if(e.key==='ArrowLeft')next=(i+tabs.length-1)%tabs.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=tabs.length-1;else return;e.preventDefault();setTab(tabs[next][0]);buttons.current[next]?.focus();}
+ return <section className="results"><div className="profile-heading"><PixelIcon/><div><h2>User Profile</h2><span>地球 Online · 精神系统属性 v1.1</span></div><span className="profile-stamp">{insufficient?'线索不足':'检测完成'}</span></div>
+ <div className="profile-tabs" role="tablist" aria-label="用户属性导航">{tabs.map(([id,label,en],i)=><button key={id} ref={el=>{buttons.current[i]=el;}} id={`tab-${id}`} role="tab" aria-selected={tab===id} aria-controls={`panel-${id}`} tabIndex={tab===id?0:-1} onClick={()=>setTab(id)} onKeyDown={e=>move(e,i)}>{label}<small>{en}</small></button>)}</div>
+ <section className="profile-panel" id="panel-general" role="tabpanel" aria-labelledby="tab-general" hidden={tab!=='general'}>
+ <div className="result-hero" id="profile-general"><div><span className="result-kicker">{result.status==='single'?'你的主要回血机制':insufficient?'数据不足提示 · 非正式人格':'你的回血机制组合'}</span><h1 id="page-title" tabIndex={-1}>{p?.name||(types.length?'多种补给，同时在线':'暂时无法判定')}</h1><p className="quote">{p?.quote||(types.length?'你的精神系统，不只有一种补给方式。':'这次先不急着给自己贴标签。')}</p><p>{p?.description||(insufficient?reason:result.status==='tie'?'这些机制的归一化比较值完全并列，因此共同展示，不用固定顺序或随机数替你决定人格。':'领先机制的比较值相差不超过 0.1。当前试行规则将接近的机制共同展示，帮助你探索不同补给方式。')}</p><span className="pilot">趣味探索 · 规则待校准 · 非科学心理测评</span></div><Artwork type={types.join('+')||'unknown'} large/></div>
+ {!insufficient&&<div className="persona-support-grid">{types.map(key=><article className="result-block persona-support" key={key} data-persona={key}><div className="persona-support-heading"><Artwork type={key}/><div><small>{key}</small><h2>{personas[key].name}</h2></div></div>{!p&&<p>{personas[key].description}</p>}<div className="system-message"><h3>System Message · 系统鼓励</h3><p>{personas[key].systemMessage}</p></div><div className="recharge-tip"><h3>Recharge Tip · 回血建议</h3><p>{personas[key].rechargeTip}</p></div><details className="more-ways"><summary>更多常见回血方式</summary><ul>{personas[key].ways.map(w=><li key={w}>{w}</li>)}</ul></details></article>)}</div>}
+ {insufficient&&<div className="insufficient-actions"><PixelIcon kind="info"/><p>这是数据不足的提示，不是第七种人格。你的答题记录仍可查看，也可以重新选择。</p><button className="secondary" onClick={()=>setTab('scoring')}>查看得分与原因</button></div>}
+ </section>
+ <section className="profile-panel" id="panel-history" role="tabpanel" aria-labelledby="tab-history" hidden={tab!=='history'}>
+ <article className="result-block tendencies" id="profile-signals"><small>YOUR SELECTED SIGNALS</small><h2>你的回答里，还有这些线索</h2><p>这些是本次选择的片段，不代表固定的心理特质。</p><div className="tags">{Object.entries(result.behavioralProfile).map(([tag,count])=><span key={tag}>{tag.replace(/^T\d+\s*/,'')} · {String(count)} 次</span>)}</div><div className="context">{result.contextProfile.filter((o:any)=>o.questionId==='Q2'||o.questionId==='Q3').map((o:any)=><p key={o.questionId}>{o.questionId==='Q2'?'当前副本':'最近状态'}：{o.text.slice(3)}</p>)}</div></article>
+ <div className="history-heading"><PixelIcon kind="folder"/><div><h2>Answer History</h2><p>以下记录仅保存在当前浏览器，分享链接不会包含这些答案。</p></div></div><ol className="answer-history">{questions.map(q=>{const selected=result.selections.find((o:any)=>o.questionId===q.questionId);return <li key={q.questionId}><h3>{q.text}</h3><p>{selected?.text||'本题未作答'}</p></li>;})}</ol>
+ </section>
+ <section className="profile-panel" id="panel-reading" role="tabpanel" aria-labelledby="tab-reading" hidden={tab!=='reading'}>
+ <div className="reading-heading"><PixelIcon kind="folder"/><div><h2>Recommended Reading.exe</h2><p>按本次回血机制挑选的延伸阅读。可以先借阅或浏览介绍，阅读无需变成新的任务。</p></div></div>
+ {types.length?types.map(key=><section className="reading-group" key={key}><h3>{key} · {personas[key].name}</h3><div className="reading-grid">{personas[key].books.map((book,i)=><article className="book-card" key={book.title}><div className="book-cover" aria-hidden="true"><span>READ<br/>ME</span><b>{String(i+1).padStart(2,'0')}</b></div><div><h4>{book.title}</h4><p className="book-author">{book.author}</p><p>{book.reason}</p><a href={book.url} target="_blank" rel="noopener noreferrer">查看作者 / 出版社介绍 ↗</a></div></article>)}</div></section>):<p className="empty-reading">本次暂未形成候选人格，因此不按人格分配书单。可以先查看得分原因，或重新测试后再探索阅读。</p>}
+ <p className="reading-note">书名与作者已按作者或出版社官网核实；人格与书籍的匹配理由由本项目编写，仅供阅读探索，不作为治疗建议。</p>
+ </section>
+ <section className="profile-panel" id="panel-scoring" role="tabpanel" aria-labelledby="tab-scoring" hidden={tab!=='scoring'}>
+ <div className="scoring-heading"><PixelIcon kind="info"/><div><h2>Scoring Info</h2><p>只有六种正式机制；下列数字是本题库的比较依据，不是心理准确率。</p></div></div>
+ <p className="score-status">{insufficient?reason:result.status==='tie'?'最高比较值完全并列，保留所有并列候选；不额外加入仅仅接近的较低候选。':result.status==='mixed'?'存在多个接近的候选，因此共同展示，不强行确定唯一人格。':'本次有一个候选在待校准规则下明确领先。'}</p>
+ <table className="score-table-v11"><caption>六种机制的原始得分、题库上限与独立题目证据</caption><thead><tr><th scope="col">机制</th><th scope="col">原始分 / 上限</th><th scope="col">证据题</th><th scope="col">比较值</th></tr></thead><tbody>{Object.keys(personas).map(key=><tr key={key}><th scope="row">{key}<small>{personas[key].name}</small></th><td>{result.totals[key]} / {result.theory[key].max}</td><td>{result.evidence[key]}</td><td>{(result.theory[key].max?result.totals[key]/result.theory[key].max:0).toFixed(3)}</td></tr>)}</tbody></table>
+ <details className="rule-detail" id="profile-rules" open><summary>这份结果是怎么来的？</summary><p>只累加 Excel F–K 列中明确填写的数字；只有“参与评分”的题目影响得分。空白保留为未定义，不从答案字母或行为标签推导分数。比较值 = 原始得分 ÷ 该机制理论最高分。</p><p>每种机制至少需两道不同题目的正分证据，才能进入候选。最高比较值完全并列时，共同展示所有最高候选；唯一最高但与其他候选的差距不超过 0.1 时，展示混合倾向。精度容差为 10⁻⁹；不使用随机数，也不默认返回 ACT。</p><p>两题门槛、归一化和 0.1 差距沿用可配置的试行方案，尚未经过用户研究校准。Q9-D「独处一段时间」虽然标为暂停休整，仍按 Excel 计入 THINK = 2。完整作答时 Q4 必定产生正分；若只有单题证据，则显示证据不足，不生成第七种人格。</p></details>
+ </section>
+ <div className="result-actions"><button className="primary" disabled={saving} onClick={onSave}>{saving?'生成图片中…':'保存结果图片'} ↓</button><button className="secondary" onClick={onShare}>分享 / 复制链接 ↗</button><button className="text-button" onClick={onReset}>重新测试 ↻</button></div>
+ </section>;
+}

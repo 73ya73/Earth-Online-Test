@@ -1,14 +1,9 @@
+import {pixelArt} from '../data/pixel-art.js';
 export function drawArt(ctx:CanvasRenderingContext2D,key:string,x:number,y:number,size:number){
- ctx.save();ctx.translate(x,y);ctx.strokeStyle='#254f4b';ctx.fillStyle='#254f4b';ctx.lineWidth=size/90;
- const r=size*.35;ctx.translate(size/2,size/2);
- if(key==='ACT'){for(let i=0;i<5;i++){ctx.beginPath();let d=(i-2)*size*.11;ctx.moveTo(-r,d+r/2);ctx.lineTo(r,d-r/2);ctx.lineTo(r-size*.17,d-r/2);ctx.stroke();}}
- else if(key==='RESET'){for(let i=0;i<7;i++){ctx.beginPath();ctx.ellipse(0,(i-3)*size*.065,r-Math.abs(i-3)*size*.022,size*.075,0,0,Math.PI*2);ctx.stroke();}}
- else if(key==='SOCIAL'){for(let i=0;i<3;i++){let a=i*Math.PI*2/3;ctx.beginPath();ctx.arc(Math.cos(a)*r*.5,Math.sin(a)*r*.5,r*.7,0,Math.PI*2);ctx.stroke();}}
- else if(key==='LUCK'){for(let i=0;i<4;i++){let s=r*(1-i*.19);ctx.beginPath();ctx.moveTo(0,-s);ctx.quadraticCurveTo(s*.12,-s*.12,s,0);ctx.quadraticCurveTo(s*.12,s*.12,0,s);ctx.quadraticCurveTo(-s*.12,s*.12,-s,0);ctx.quadraticCurveTo(-s*.12,-s*.12,0,-s);ctx.stroke();}}
- else if(key==='THINK'){for(let i=0;i<6;i++){ctx.rotate(Math.PI/6);ctx.strokeRect(-r*.7,-r*.7,r*1.4,r*1.4);}}
- else if(key==='SAVE'){for(let i=0;i<5;i++){let d=i*size*.055;ctx.strokeRect(-r+d*.5,-r+d,r*1.7,r*1.25);}}
- else{for(let i=0;i<6;i++){ctx.beginPath();ctx.arc(0,0,r*(i+1)/6,0,Math.PI*2);ctx.stroke();}}
- ctx.restore();
+ const keys=key.split('+').filter(Boolean);
+ if(keys.length>1){const cols=keys.length===2?2:Math.ceil(Math.sqrt(keys.length));const cell=size/cols;const rows=Math.ceil(keys.length/cols);keys.forEach((k,i)=>drawArt(ctx,k,x+(i%cols)*cell,y+(size-rows*cell)/2+Math.floor(i/cols)*cell,cell));return;}
+ const unit=Math.max(1,Math.floor(size/64));ctx.save();ctx.imageSmoothingEnabled=false;ctx.translate(Math.round(x+(size-unit*64)/2),Math.round(y+(size-unit*64)/2));ctx.scale(unit,unit);
+ for(const [px,py,w,h,color] of pixelArt(key)){ctx.fillStyle=color;ctx.fillRect(px,py,w,h);}ctx.restore();
 }
 export async function createCard(title:string,quote:string,key:string){
  await document.fonts.ready;const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1440;const c=canvas.getContext('2d')!;

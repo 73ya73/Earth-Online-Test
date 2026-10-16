@@ -1,0 +1,80 @@
+{
+  "ACT": {
+    "name": "正面开团型",
+    "quote": "问题可以不解决，但我不能什么都不做。",
+    "description": "面对不确定，你倾向先找一件能动手的事。把模糊的问题变成一个小行动，掌控感便慢慢回到手里。这种把想法推进到现实的力量，也能让你更快获得反馈、调整方向。",
+    "systemMessage": "行动引擎已上线。你不必一个人扛完整张地图：发出求助信号，也算一次漂亮的主动操作。今天推进一小格，已经为下一回合铺好了路。",
+    "rechargeTip": "挑一件卡住的小事，只做两分钟；再写下一个可以请别人帮忙的部分，不用今天独自通关。",
+    "ways": ["把大任务拆成一个小步骤", "给自己设一个可完成的目标", "先行动，再根据反馈调整"],
+    "artLabel": "宝剑与盾牌",
+    "books": [
+      {"title": "Atomic Habits", "author": "James Clear", "reason": "把行动拆成容易重复的小步骤，适合用微小进展代替一次性硬冲。", "url": "https://jamesclear.com/atomic-habits"},
+      {"title": "Essentialism: The Disciplined Pursuit of Less", "author": "Greg McKeown", "reason": "练习挑出真正重要的任务，让行动力有重点，也给拒绝和求助留出空间。", "url": "https://gregmckeown.com/books/essentialism/"}
+    ]
+  },
+  "RESET": {
+    "name": "省电自救型",
+    "quote": "世界先别催，我的精神系统正在充电。",
+    "description": "你更愿意给精神系统留出缓冲。暂停、休息、减少负担，是你为下一段旅程补充能量的方式。能觉察到自己需要休整，也是在认真照看有限的精力。",
+    "systemMessage": "系统允许暂停，存档不会因此消失。休息不是掉队，是给下一次出发留电量；今天不必证明自己还能再撑一关。",
+    "rechargeTip": "留出十分钟免打扰时间，离开屏幕坐一会儿或慢慢走动，不把这段休息变成新的待办。",
+    "ways": ["给自己一段免打扰时间", "睡一觉或暂时离开屏幕", "减少今天必须完成的事情"],
+    "artLabel": "绿色充电电池与小床",
+    "books": [
+      {"title": "Rest: Why You Get More Done When You Work Less", "author": "Alex Soojung-Kim Pang", "reason": "重新看待工作与休息的关系，给有意识的恢复留出正当的位置。", "url": "https://www.hachettebookgroup.com/titles/alex-soojung-kim-pang/rest/9781541604834/"},
+      {"title": "Four Thousand Weeks", "author": "Oliver Burkeman", "reason": "从有限的时间出发，松开必须做完一切的要求，把精力留给真正想过的生活。", "url": "https://www.oliverburkeman.com/books"}
+    ]
+  },
+  "SOCIAL": {
+    "name": "人类联机型",
+    "quote": "单机模式太难了，申请大腿求带。",
+    "description": "你倾向在连接中找回能量。有人听你说、与你分享或一起面对，生活的难度就不必由一个人承受。把感受说出来、与他人互相支持，是你的一种补给资源。",
+    "systemMessage": "联机请求已送达。愿意靠近别人，是一种勇气；需要下线休息也完全合理。好的队伍会给彼此留位置，也会尊重彼此的电量。",
+    "rechargeTip": "给一个信任的人发消息：你现在方便听我说五分钟吗？聊完也留一点时间给自己，不必随时在线。",
+    "ways": ["找信任的人聊一会儿", "和朋友一起做件轻松的事", "把需要的帮助直接说出来"],
+    "artLabel": "两台互相连接的电脑与爱心",
+    "books": [
+      {"title": "The Art of Gathering: How We Meet and Why It Matters", "author": "Priya Parker", "reason": "让见面更有目的和温度，把一起出现变成真正有意义的连接。", "url": "https://www.priyaparker.com/the-art-of-gathering"},
+      {"title": "Set Boundaries, Find Peace", "author": "Nedra Glover Tawwab", "reason": "练习表达需要与个人边界，让获得陪伴和保留独处能够同时发生。", "url": "https://www.penguinrandomhouse.com/books/647316/set-boundaries-find-peace-by-nedra-glover-tawwab/"}
+    ]
+  },
+  "LUCKY": {
+    "name": "赛博锦鲤型",
+    "quote": "科学归科学，好运我先接住。",
+    "description": "小小的仪式给你一个期待的落点。许愿、接好运、换个头像，像是在等待中给自己留下一盏灯。这种为未来保留希望的方式，也可以成为迈出下一小步的提醒。",
+    "systemMessage": "好运申请已收件，宇宙暂未提供物流追踪。愿你接住希望，也给它配一个小行动：幸运头像负责陪跑，方向盘仍在你手里。",
+    "rechargeTip": "做完你喜欢的小仪式后，顺手完成一件两分钟能做的事，让期待在现实里多一个落点。",
+    "ways": ["留一个属于自己的小仪式", "给明天写下一句好期待", "把象征性的好运当作鼓励"],
+    "artLabel": "四叶草与锦鲤",
+    "books": [
+      {"title": "The Book of Delights", "author": "Ross Gay", "reason": "从普通日子里发现小小的欣喜，让希望不只依靠等待一个大好消息。", "url": "https://www.hachettebookgroup.com/titles/ross-gay/the-book-of-delights/9781643753287/"},
+      {"title": "Tiny Habits", "author": "BJ Fogg", "reason": "把积极期待接到一个足够小的行动上，让愿望有机会长成日常习惯。", "url": "https://tinyhabits.com/book/"}
+    ]
+  },
+  "THINK": {
+    "name": "脑内推演型",
+    "quote": "现实还没更新，我已经模拟了八百种结局。",
+    "description": "你倾向用分析和准备减少未知。把可能发生的情况想清楚，或者整理出几个备选方案，会让你更有底气。你的预演能力能帮助发现风险，也能为尝试准备一条退路。",
+    "systemMessage": "模拟器可以先暂停在第八百零一种结局之前。你已经准备了一些路线，不必等地图百分之百加载，才允许自己迈出一步。现实反馈也是有用的新数据。",
+    "rechargeTip": "写下一个最可能的情况和一个可逆的小步骤，给思考设五分钟上限，再用行动补一条真实反馈。",
+    "ways": ["写下最可能的几个情况", "为每种情况准备一个下一步", "给思考设一个结束时间"],
+    "artLabel": "电脑芯片与思考气泡",
+    "books": [
+      {"title": "Thinking in Bets: Making Smarter Decisions When You Don't Have All the Facts", "author": "Annie Duke", "reason": "练习在信息不完整时做决定，把决策过程与一次结果的好坏分开看。", "url": "https://www.annieduke.com/books/"},
+      {"title": "The Scout Mindset", "author": "Julia Galef", "reason": "带着好奇检查自己的判断，允许新证据更新路线，而不必守住每个预想。", "url": "https://www.penguinrandomhouse.com/books/555240/the-scout-mindset-by-julia-galef/"}
+    ]
+  },
+  "SAVE": {
+    "name": "人生存档型",
+    "quote": "经历不能白给，多少得留下点经验值。",
+    "description": "你倾向从回顾中找到意义。保存片段、整理经验、回望走过的路，能帮你看到自己已经积累的东西。把经历连成自己的故事，也能提醒你带着已有的资源继续前进。",
+    "systemMessage": "这一段旅程已成功存档。珍贵的片段可以随身携带，下一张地图也还有空白页；不必把每一刻保存完美，新的记忆会慢慢长出来。",
+    "rechargeTip": "记下一件今天想留下的小事，再为明天安排一个微小的新体验：换条路、听首新歌，或和人说一句新鲜的话。",
+    "ways": ["记下一件今天值得保存的事", "整理一段经历里的收获", "翻翻能提醒自己成长的记录"],
+    "artLabel": "软盘与星星",
+    "books": [
+      {"title": "The Art of Noticing", "author": "Rob Walker", "reason": "练习注意日常里容易错过的细节，为下一份值得珍藏的记忆留出入口。", "url": "https://www.penguin.co.uk/books/437408/the-art-of-noticing-by-walker-rob/9781529104431"},
+      {"title": "A Field Guide to Getting Lost", "author": "Rebecca Solnit", "reason": "从记忆、地方与未知之间的联系出发，一边回望经历，一边允许新的探索。", "url": "https://www.penguinrandomhouse.com/books/293600/a-field-guide-to-getting-lost-by-rebecca-solnit/"}
+    ]
+  }
+}
