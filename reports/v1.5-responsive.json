@@ -1,0 +1,106 @@
+{
+  "transition": {
+    "quiz": {
+      "left": 228.1000061035156,
+      "top": 14,
+      "width": 980
+    },
+    "result": {
+      "left": 228.1000061035156,
+      "top": 14,
+      "width": 980
+    }
+  },
+  "folder": [
+    {
+      "columns": "162.238px 162.238px 162.238px 162.238px 162.238px",
+      "files": 2,
+      "folder": {
+        "bottom": 500.8000183105469,
+        "left": 225.6000061035156,
+        "right": 1125.6000061035156,
+        "top": 65
+      },
+      "overflow": false,
+      "viewport": [
+        1366,
+        768
+      ]
+    },
+    {
+      "columns": "162.238px 162.238px 162.238px 162.238px 162.238px",
+      "files": 2,
+      "folder": {
+        "bottom": 500.8000183105469,
+        "left": 262.3999938964844,
+        "right": 1162.3999938964844,
+        "top": 65
+      },
+      "overflow": false,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "columns": "162.238px 162.238px 162.238px 162.238px 162.238px",
+      "files": 2,
+      "folder": {
+        "bottom": 500.8000183105469,
+        "left": 502.3999938964844,
+        "right": 1402.3999938964844,
+        "top": 65
+      },
+      "overflow": false,
+      "viewport": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "columns": "153.4px 153.4px",
+      "files": 2,
+      "folder": {
+        "bottom": 497.3999938964844,
+        "left": 8,
+        "right": 352,
+        "top": 55
+      },
+      "overflow": false,
+      "viewport": [
+        375,
+        812
+      ]
+    },
+    {
+      "columns": "161px 161px",
+      "files": 2,
+      "folder": {
+        "bottom": 497.3999938964844,
+        "left": 8,
+        "right": 367.2000122070313,
+        "top": 55
+      },
+      "overflow": false,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "columns": "181px 181px",
+      "files": 2,
+      "folder": {
+        "bottom": 466.8000183105469,
+        "left": 8,
+        "right": 407.2000122070313,
+        "top": 55
+      },
+      "overflow": false,
+      "viewport": [
+        430,
+        932
+      ]
+    }
+  ]
+}

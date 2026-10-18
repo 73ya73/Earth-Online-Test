@@ -1,0 +1,13 @@
+{
+  "name":"回血机制探索中",
+  "quote":"你的精神回血方式还在解锁中，当前版本暂未识别出最明显的主属性。",
+  "description":"并不是每个玩家都需要立刻选定一种回血方式。这份状态记录的是本次答题中的线索，新的生活情境也可能带来新的发现。",
+  "systemMessage":"并不是每个玩家都要拥有固定的职业和技能树。有时候，你只是还没有遇到适合当前版本的回血方式。没有明确答案，也是一种值得被允许的状态。",
+  "rechargeTip":"接下来的一周，可以尝试记录三件让自己感觉稍微轻松一点的小事。它们不一定需要高效、有意义或值得分享，只要确实让你感到舒服，就值得保留。",
+  "ways":["记下一件让自己稍微轻松的小事","尝试一种低负担的休息方式","允许自己的需要随生活情境变化"],
+  "artLabel":"显示探索地图的像素电脑与指南针",
+  "books":[
+    {"title":"也许你该找个人聊聊 · Maybe You Should Talk to Someone","author":"Lori Gottlieb","reason":"理解人如何在困惑、变化和自我探索中慢慢认识自己。","url":"https://lorigottlieb.com/books/maybe-you-should-talk-to-someone/"},
+    {"title":"幸福的陷阱 · The Happiness Trap","author":"Russ Harris","reason":"了解如何与不确定的想法和情绪相处，尝试建立更灵活的生活方式。","url":"https://thehappinesstrap.com/my-story/"}
+  ]
+}

@@ -2,7 +2,7 @@ import json,re,sys
 from pathlib import Path
 import openpyxl
 root=Path(__file__).resolve().parents[1]
-source=Path(sys.argv[1]) if len(sys.argv)>1 else Path(r'C:\Users\41773\Downloads\分数 (7).xlsx')
+source=Path(sys.argv[1]) if len(sys.argv)>1 else Path(r'C:\Users\41773\Downloads\分数 (8).xlsx')
 rows=list(openpyxl.load_workbook(source,data_only=True)['分数'].values)
 data=json.loads((root/'src/data/questions.json').read_text(encoding='utf-8'))
 keys=['ACT','RESET','SOCIAL','LUCKY','THINK','SAVE']

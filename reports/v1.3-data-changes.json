@@ -1,0 +1,34 @@
+[
+  {
+    "questionId": "Q9",
+    "edits": [
+      {
+        "field": "question",
+        "before": "Q9 当精神电量只剩 5%，你的灵魂通常会偷偷打开哪个回血外挂？（多选最多两项）",
+        "after": "Q9 当精神电量只剩 5%，你的灵魂通常会偷偷打开哪个回血外挂？"
+      }
+    ]
+  },
+  {
+    "questionId": "Q10",
+    "edits": [
+      {
+        "field": "question",
+        "before": "Q10 使用了你的专属「精神回血技能」后，系统检测到哪些状态变化？（多选最多两项）",
+        "after": "Q10 使用了你的专属「精神回血技能」后，系统检测到哪些状态变化？"
+      },
+      {
+        "optionId": "E",
+        "field": "behaviorTag",
+        "before": "T08 反复确认",
+        "after": "T13 无明显变化"
+      },
+      {
+        "optionId": "F",
+        "field": "behaviorTag",
+        "before": "T10 寻求方向",
+        "after": "T14 负向体验"
+      }
+    ]
+  }
+]

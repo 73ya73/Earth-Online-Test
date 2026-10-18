@@ -1,6 +1,6 @@
 {
-  "datasetVersion": "1.2",
-  "source": "分数 (7).xlsx",
+  "datasetVersion": "1.5",
+  "source": "分数 (8).xlsx",
   "questions": 13,
   "options": 70,
   "optionCounts": [
@@ -52,7 +52,7 @@
   },
   "undefinedScoreCells": 397,
   "warnings": [
-    "Q9/Q10 最多两选；Q13 A–F 多选、G 互斥。Q10-E/F 原始标签保留，展示采用效果反馈标签，待校准。REST/LUCK 是文档别名，内部沿用 Excel 的 RESET/LUCKY。",
+    "Q9 最多两选；Q10 A–D 最多两选、E/F 各自独立互斥；Q13 A–F 多选、G 互斥。Q10-E/F 已由新表修订为 T13 无明显变化、T14 负向体验。REST/LUCK 是文档别名，内部沿用 Excel 的 RESET/LUCKY。",
     "空白分数保留为 null；仅累加明确数字，不为 null 赋分。空白含义仍需数据作者确认。",
     "Q9-D 标签 T02 暂停休整，明确分数 THINK=2；按原表保留。",
     "Q1-Q3 没有行为标签，保留 null，不自行编造。",

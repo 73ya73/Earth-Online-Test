@@ -1,0 +1,21 @@
+{
+  "baseline": "地球Online-v1.3源码.zip",
+  "preservedFiles": {
+    "src/scoring/engine.js": true,
+    "src/scoring/answers.js": true,
+    "src/scoring/status.js": true,
+    "src/data/personas.json": true,
+    "src/data/pixel-art.js": true,
+    "src/data/exploring.json": true,
+    "src/data/profiles.ts": true
+  },
+  "allQuestionTextsOptionsTagsNatureAndScoresUnchanged": true,
+  "Q10RuleChange": {
+    "before": [],
+    "after": [
+      "E",
+      "F"
+    ],
+    "controls": "radio"
+  }
+}

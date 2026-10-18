@@ -22,10 +22,10 @@ test('Q9 selected options sum exact Excel scores; evidence counts distinct quest
  assert.ok(Object.values(calculate(qs,{Q9:['D','F','A']}).totals).every(v=>v===0));
  const changed=calculate(qs,{Q9:['A','G']});assert.equal(changed.totals.THINK,0);assert.equal(changed.totals.ACT,0);assert.equal(changed.totals.RESET,2);assert.equal(changed.totals.SAVE,2);
 });
-test('Q10 E/F display feedback while retaining raw tags without scoring',()=>{
- const r=calculate(qs,{Q10:['E','F'],Q13:['A','C','F']});assert.ok(Object.values(r.totals).every(v=>v===0));assert.equal(r.rawBehavioralProfile['T08 反复确认'],1);assert.equal(r.rawBehavioralProfile['T10 寻求方向'],1);
- assert.equal(r.behavioralProfile['T08 反复确认'],undefined);assert.equal(r.behavioralProfile['T10 寻求方向'],undefined);assert.equal(r.behavioralProfile['效果反馈：状态无明显变化'],1);assert.equal(r.behavioralProfile['效果反馈：负面效果触发'],1);assert.equal(r.selections.length,5);
- assert.ok(qs[9].options.slice(4).every(o=>o.tagCalibration==='needs-review'));
+test('Q10 E/F display feedback using corrected workbook tags without scoring',()=>{
+ const e=calculate(qs,{Q10:['E']}),f=calculate(qs,{Q10:['F'],Q13:['A','C','F']});const r={...f,rawBehavioralProfile:{...e.rawBehavioralProfile,...f.rawBehavioralProfile},behavioralProfile:{...e.behavioralProfile,...f.behavioralProfile}};assert.ok(Object.values(r.totals).every(v=>v===0));assert.equal(r.rawBehavioralProfile['T13 无明显变化'],1);assert.equal(r.rawBehavioralProfile['T14 负向体验'],1);
+ assert.equal(r.behavioralProfile['T08 反复确认'],undefined);assert.equal(r.behavioralProfile['T10 寻求方向'],undefined);assert.equal(r.behavioralProfile['T13 无明显变化'],1);assert.equal(r.behavioralProfile['T14 负向体验'],1);assert.equal(r.selections.length,4);
+ assert.ok(qs[9].options.slice(4).every(o=>!o.tagCalibration&&!o.feedbackTag));
 });
 test('System Status uses raw total shares, handles zero/nonfinite values, and retains cutoff ties',()=>{
  const s=systemStatus({ACT:4,RESET:2,SOCIAL:1,LUCKY:1,THINK:0,SAVE:0});assert.equal(s.attributes[0].percent,50);assert.equal(s.attributes[1].percent,25);assert.equal(s.attributes[2].percent,12.5);assert.equal(s.attributes.reduce((n,x)=>n+x.percent,0),100);assert.deepEqual(s.top.map(x=>x.rank),[1,2,3,3]);

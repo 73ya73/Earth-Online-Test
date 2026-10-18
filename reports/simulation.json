@@ -21,13 +21,15 @@
     "single": 6793,
     "tie": 639,
     "mixed": 749,
-    "insufficient": 1819
+    "insufficient": 0,
+    "exploring": 1819
   },
   "statusRatios": {
     "single": 0.6793,
     "tie": 0.0639,
     "mixed": 0.0749,
-    "insufficient": 0.1819
+    "insufficient": 0,
+    "exploring": 0.1819
   },
   "note": "在每题合法答案集合中均匀随机选择（包含多选及互斥）只检查算法结构，不代表真实人群分布。规则为待校准试行配置。"
 }

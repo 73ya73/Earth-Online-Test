@@ -16,3 +16,13 @@
 | THINK | The Scout Mindset | Julia Galef | [Penguin Random House](https://www.penguinrandomhouse.com/books/555240/the-scout-mindset-by-julia-galef/) |
 | SAVE | The Art of Noticing | Rob Walker | [Penguin / Ebury Press](https://www.penguin.co.uk/books/437408/the-art-of-noticing-by-walker-rob/9781529104431) |
 | SAVE | A Field Guide to Getting Lost | Rebecca Solnit | [Penguin Random House](https://www.penguinrandomhouse.com/books/293600/a-field-guide-to-getting-lost-by-rebecca-solnit/) |
+
+
+## v1.3 探索状态补充（EXPLORING）
+
+探索不属于新的计分机制。以下两本按 v1.3 需求加入；英文书名及作者已在作者官网核实。中文标题沿用用户提供的常用译名，不指定中文版本或 ISBN。匹配理由为项目编辑说明。
+
+| 状态 | 书名 | 作者 | 官方来源 |
+|---|---|---|---|
+| EXPLORING | 也许你该找个人聊聊 · Maybe You Should Talk to Someone | Lori Gottlieb | [作者书籍介绍](https://lorigottlieb.com/books/maybe-you-should-talk-to-someone/) |
+| EXPLORING | 幸福的陷阱 · The Happiness Trap | Russ Harris | [作者介绍与书籍](https://thehappinesstrap.com/my-story/) |

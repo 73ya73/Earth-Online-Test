@@ -752,7 +752,7 @@
   },
   {
     "questionId": "Q9",
-    "text": "Q9 当精神电量只剩 5%，你的灵魂通常会偷偷打开哪个回血外挂？（多选最多两项）",
+    "text": "Q9 当精神电量只剩 5%，你的灵魂通常会偷偷打开哪个回血外挂？",
     "scoringEnabled": true,
     "answerNature": "情境,需求,行为,态度",
     "selectionMode": "multiple",
@@ -882,12 +882,16 @@
   },
   {
     "questionId": "Q10",
-    "text": "Q10 使用了你的专属「精神回血技能」后，系统检测到哪些状态变化？（多选最多两项）",
+    "text": "Q10 使用了你的专属「精神回血技能」后，系统检测到哪些状态变化？",
     "scoringEnabled": false,
     "answerNature": "情境,行为,态度",
     "selectionMode": "multiple",
     "maxSelections": 2,
-    "exclusiveOptions": [],
+    "exclusiveOptions": [
+      "E",
+      "F"
+    ],
+    "exclusiveControl": "radio",
     "options": [
       {
         "questionId": "Q10",
@@ -962,7 +966,7 @@
         "optionId": "E",
         "text": "E. 状态无明显变化",
         "answerNature": "情境,行为,态度",
-        "behaviorTag": "T08 反复确认",
+        "behaviorTag": "T13 无明显变化",
         "scoringEnabled": false,
         "scores": {
           "ACT": null,
@@ -972,16 +976,14 @@
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 71,
-        "feedbackTag": "效果反馈：状态无明显变化",
-        "tagCalibration": "needs-review"
+        "sourceRow": 71
       },
       {
         "questionId": "Q10",
         "optionId": "F",
         "text": "F. 负面效果触发",
         "answerNature": "情境,行为,态度",
-        "behaviorTag": "T10 寻求方向",
+        "behaviorTag": "T14 负向体验",
         "scoringEnabled": false,
         "scores": {
           "ACT": null,
@@ -991,9 +993,7 @@
           "THINK": null,
           "SAVE": null
         },
-        "sourceRow": 72,
-        "feedbackTag": "效果反馈：负面效果触发",
-        "tagCalibration": "needs-review"
+        "sourceRow": 72
       }
     ]
   },

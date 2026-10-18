@@ -1,0 +1,218 @@
+[
+  {
+    "innerScrollers": 0,
+    "minTarget": 44,
+    "navBottom": 487.5000114440918,
+    "overflow": false,
+    "question": "Q9 ",
+    "taskbarTop": 730,
+    "viewport": [
+      1366,
+      768
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 44,
+    "navBottom": 528.6500053405762,
+    "overflow": false,
+    "question": "Q9 ",
+    "taskbarTop": 862,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 44,
+    "navBottom": 528.6500053405762,
+    "overflow": false,
+    "question": "Q9 ",
+    "taskbarTop": 1042,
+    "viewport": [
+      1920,
+      1080
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 48,
+    "navBottom": 856.7999992370605,
+    "overflow": false,
+    "question": "Q9 ",
+    "taskbarTop": 775,
+    "viewport": [
+      375,
+      812
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 48,
+    "navBottom": 856.7999992370605,
+    "overflow": false,
+    "question": "Q9 ",
+    "taskbarTop": 807,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 48,
+    "navBottom": 856.7999992370605,
+    "overflow": false,
+    "question": "Q9 ",
+    "taskbarTop": 895,
+    "viewport": [
+      430,
+      932
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 44,
+    "navBottom": 437.5000114440918,
+    "overflow": false,
+    "question": "Q10",
+    "taskbarTop": 730,
+    "viewport": [
+      1366,
+      768
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 44,
+    "navBottom": 477.6500053405762,
+    "overflow": false,
+    "question": "Q10",
+    "taskbarTop": 862,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 44,
+    "navBottom": 477.6500053405762,
+    "overflow": false,
+    "question": "Q10",
+    "taskbarTop": 1042,
+    "viewport": [
+      1920,
+      1080
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 48,
+    "navBottom": 800.7999992370605,
+    "overflow": false,
+    "question": "Q10",
+    "taskbarTop": 775,
+    "viewport": [
+      375,
+      812
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 48,
+    "navBottom": 800.7999992370605,
+    "overflow": false,
+    "question": "Q10",
+    "taskbarTop": 807,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 48,
+    "navBottom": 800.7999992370605,
+    "overflow": false,
+    "question": "Q10",
+    "taskbarTop": 895,
+    "viewport": [
+      430,
+      932
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 44,
+    "navBottom": 515.5000114440918,
+    "overflow": false,
+    "question": "Q13",
+    "taskbarTop": 730,
+    "viewport": [
+      1366,
+      768
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 44,
+    "navBottom": 561.2500114440918,
+    "overflow": false,
+    "question": "Q13",
+    "taskbarTop": 862,
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 44,
+    "navBottom": 561.2500114440918,
+    "overflow": false,
+    "question": "Q13",
+    "taskbarTop": 1042,
+    "viewport": [
+      1920,
+      1080
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 48,
+    "navBottom": 888.7999992370605,
+    "overflow": false,
+    "question": "Q13",
+    "taskbarTop": 775,
+    "viewport": [
+      375,
+      812
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 48,
+    "navBottom": 888.7999992370605,
+    "overflow": false,
+    "question": "Q13",
+    "taskbarTop": 807,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "innerScrollers": 0,
+    "minTarget": 48,
+    "navBottom": 888.7999992370605,
+    "overflow": false,
+    "question": "Q13",
+    "taskbarTop": 895,
+    "viewport": [
+      430,
+      932
+    ]
+  }
+]
