@@ -14,7 +14,8 @@ test('six official personalities each have unique art, encouragement, tip, and t
 test('all pixel commands are finite, inside the shared 64px canvas, and use explicit colors',()=>{
  for(const k of [...KEYS,'unknown'])for(const [x,y,w,h,color] of pixelArt(k)){assert.ok([x,y,w,h].every(Number.isFinite));assert.ok(x>=0&&y>=0&&w>0&&h>0&&x+w<=64&&y+h<=64,`${k}: out-of-bounds rect`);assert.match(color,/^#[0-9a-f]{3,6}$/i);}
 });
-test('Q2, Q10 and Q12 follow the updated workbook rather than old option positions',()=>{
- const q2=qs[1];assert.equal(q2.options[5].text,'F. 多重副本参与中');assert.equal(q2.options[6].text,'G. 目前版本稳定，暂无重大Bug');assert.equal(q2.scoringEnabled,false);
- assert.equal(qs[9].options[3].text,'D. 放进收纳盒做纪念');assert.equal(qs[9].options[5].text,'F. 不刻意留存');assert.equal(qs[11].options[6].text,'G. 不留存档，继续奇遇');
+test('new workbook option positions remain exact',()=>{
+ assert.equal(qs[1].options[6].text,'G. 目前版本稳定，暂无重大Bug');
+ assert.equal(qs[9].options[4].text,'E. 状态无明显变化');assert.equal(qs[9].options[5].text,'F. 负面效果触发');
+ assert.equal(qs[10].options[5].text,'F. 跳过功能不留存');assert.equal(qs[12].options[6].text,'G. 不留存档，继续奇遇');
 });

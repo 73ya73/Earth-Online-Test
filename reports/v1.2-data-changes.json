@@ -1,0 +1,431 @@
+[
+  {
+    "questionId": "Q6",
+    "edits": [
+      {
+        "field": "question",
+        "before": "Q6 你向宇宙投递了一份好运申请，系统显示「结果加载中」，接下来你会？",
+        "after": "Q6 你正在等待一个重要事件的结果，系统显示「结果加载中」，接下来你会？"
+      }
+    ]
+  },
+  {
+    "questionId": "Q9",
+    "edits": [
+      {
+        "field": "question",
+        "before": "Q9 当精神电量只剩 5%，你的灵魂通常会偷偷打开哪个回血外挂？",
+        "after": "Q9 当精神电量只剩 5%，你的灵魂通常会偷偷打开哪个回血外挂？（多选最多两项）"
+      }
+    ]
+  },
+  {
+    "questionId": "Q10",
+    "edits": [
+      {
+        "field": "question",
+        "before": "Q10 如果好运可以实体化，你会怎么安置它？",
+        "after": "Q10 使用了你的专属「精神回血技能」后，系统检测到哪些状态变化？（多选最多两项）"
+      },
+      {
+        "optionId": "A",
+        "field": "text",
+        "before": "A. 随身携带幸运值",
+        "after": "A. 情绪值恢复"
+      },
+      {
+        "optionId": "A",
+        "field": "behaviorTag",
+        "before": "T04 象征仪式",
+        "after": "T11 情绪安定"
+      },
+      {
+        "optionId": "B",
+        "field": "text",
+        "before": "B. 设立固定放置据点",
+        "after": "B. 掌控感提升"
+      },
+      {
+        "optionId": "B",
+        "field": "behaviorTag",
+        "before": "T04 象征仪式",
+        "after": "T01 主动应对"
+      },
+      {
+        "optionId": "C",
+        "field": "text",
+        "before": "C. 赠给重要的人",
+        "after": "C. 行动力充能"
+      },
+      {
+        "optionId": "C",
+        "field": "behaviorTag",
+        "before": "T03 社交支持",
+        "after": "T01 主动应对"
+      },
+      {
+        "optionId": "D",
+        "field": "text",
+        "before": "D. 放进收纳盒做纪念",
+        "after": "D. 临时屏蔽烦恼"
+      },
+      {
+        "optionId": "D",
+        "field": "behaviorTag",
+        "before": "T04 象征仪式",
+        "after": "T11 情绪安定"
+      },
+      {
+        "optionId": "E",
+        "field": "text",
+        "before": "E. 拍照并分享",
+        "after": "E. 状态无明显变化"
+      },
+      {
+        "optionId": "E",
+        "field": "behaviorTag",
+        "before": "T03 社交支持",
+        "after": "T08 反复确认"
+      },
+      {
+        "optionId": "F",
+        "field": "text",
+        "before": "F. 不刻意留存",
+        "after": "F. 负面效果触发"
+      },
+      {
+        "optionId": "F",
+        "field": "behaviorTag",
+        "before": "T12 不参与",
+        "after": "T10 寻求方向"
+      }
+    ]
+  },
+  {
+    "questionId": "Q11",
+    "edits": [
+      {
+        "field": "question",
+        "before": "Q11 你等了很久的消息终于到了，不管好坏，你最可能做的第一件事是什么？",
+        "after": "Q11 如果「等待进度」可以生成专属的可视化道具，你会如何使用它？"
+      },
+      {
+        "optionId": "A",
+        "field": "text",
+        "before": "A. 通知我的羁绊亲友",
+        "after": "A. 成为随身携带的装备"
+      },
+      {
+        "optionId": "A",
+        "field": "behaviorTag",
+        "before": "T03 社交支持",
+        "after": "T04 象征仪式"
+      },
+      {
+        "optionId": "A",
+        "field": "scoringEnabled",
+        "before": true,
+        "after": false
+      },
+      {
+        "optionId": "A",
+        "field": "scores",
+        "before": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": 2,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "after": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        }
+      },
+      {
+        "optionId": "B",
+        "field": "text",
+        "before": "B. 进行赛后复盘",
+        "after": "B. 设立固定放置据点"
+      },
+      {
+        "optionId": "B",
+        "field": "behaviorTag",
+        "before": "T07 经历留存",
+        "after": "T04 象征仪式"
+      },
+      {
+        "optionId": "B",
+        "field": "scoringEnabled",
+        "before": true,
+        "after": false
+      },
+      {
+        "optionId": "B",
+        "field": "scores",
+        "before": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": 2
+        },
+        "after": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        }
+      },
+      {
+        "optionId": "C",
+        "field": "text",
+        "before": "C. 先缓冲三分钟",
+        "after": "C. 存入手机数字仓库"
+      },
+      {
+        "optionId": "C",
+        "field": "behaviorTag",
+        "before": "T02 暂停休整",
+        "after": "T07 经历留存"
+      },
+      {
+        "optionId": "C",
+        "field": "scoringEnabled",
+        "before": true,
+        "after": false
+      },
+      {
+        "optionId": "C",
+        "field": "scores",
+        "before": {
+          "ACT": null,
+          "RESET": 1,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "after": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        }
+      },
+      {
+        "optionId": "D",
+        "field": "text",
+        "before": "D. 给经历划句号",
+        "after": "D. 与其他玩家共享"
+      },
+      {
+        "optionId": "D",
+        "field": "behaviorTag",
+        "before": "T09 自主放下",
+        "after": "T03 社交支持"
+      },
+      {
+        "optionId": "D",
+        "field": "scoringEnabled",
+        "before": true,
+        "after": false
+      },
+      {
+        "optionId": "E",
+        "field": "text",
+        "before": "E. 开启下一旅程",
+        "after": "E. 收藏为纪念道具"
+      },
+      {
+        "optionId": "E",
+        "field": "behaviorTag",
+        "before": "T09 自主放下",
+        "after": "T07 经历留存"
+      },
+      {
+        "optionId": "E",
+        "field": "scoringEnabled",
+        "before": true,
+        "after": false
+      },
+      {
+        "optionId": "F",
+        "added": "F. 跳过功能不留存"
+      }
+    ]
+  },
+  {
+    "questionId": "Q12",
+    "edits": [
+      {
+        "field": "question",
+        "before": "Q12 如果每段地球Online经历都可以存档，你最想留下什么？",
+        "after": "Q12 你等了很久的消息终于到了，不管好坏，你最可能做的第一件事是什么？"
+      },
+      {
+        "optionId": "A",
+        "field": "text",
+        "before": "A. 人生成就",
+        "after": "A. 通知我的羁绊亲友"
+      },
+      {
+        "optionId": "A",
+        "field": "behaviorTag",
+        "before": "T07 经历留存",
+        "after": "T03 社交支持"
+      },
+      {
+        "optionId": "A",
+        "field": "scoringEnabled",
+        "before": false,
+        "after": true
+      },
+      {
+        "optionId": "A",
+        "field": "scores",
+        "before": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "after": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": 2,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        }
+      },
+      {
+        "optionId": "B",
+        "field": "text",
+        "before": "B. 成长经验包",
+        "after": "B. 进行赛后复盘"
+      },
+      {
+        "optionId": "B",
+        "field": "scoringEnabled",
+        "before": false,
+        "after": true
+      },
+      {
+        "optionId": "B",
+        "field": "scores",
+        "before": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "after": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": 2
+        }
+      },
+      {
+        "optionId": "C",
+        "field": "text",
+        "before": "C. 情绪记忆碎片",
+        "after": "C. 先缓冲三分钟"
+      },
+      {
+        "optionId": "C",
+        "field": "behaviorTag",
+        "before": "T07 经历留存",
+        "after": "T02 暂停休整"
+      },
+      {
+        "optionId": "C",
+        "field": "scoringEnabled",
+        "before": false,
+        "after": true
+      },
+      {
+        "optionId": "C",
+        "field": "scores",
+        "before": {
+          "ACT": null,
+          "RESET": null,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        },
+        "after": {
+          "ACT": null,
+          "RESET": 1,
+          "SOCIAL": null,
+          "LUCKY": null,
+          "THINK": null,
+          "SAVE": null
+        }
+      },
+      {
+        "optionId": "D",
+        "field": "text",
+        "before": "D. 重要人物图鉴",
+        "after": "D. 给经历划句号"
+      },
+      {
+        "optionId": "D",
+        "field": "behaviorTag",
+        "before": "T07 经历留存",
+        "after": "T09 自主放下"
+      },
+      {
+        "optionId": "D",
+        "field": "scoringEnabled",
+        "before": false,
+        "after": true
+      },
+      {
+        "optionId": "E",
+        "field": "text",
+        "before": "E. 温暖鼓励的声音",
+        "after": "E. 开启下一旅程"
+      },
+      {
+        "optionId": "E",
+        "field": "behaviorTag",
+        "before": "T07 经历留存",
+        "after": "T09 自主放下"
+      },
+      {
+        "optionId": "E",
+        "field": "scoringEnabled",
+        "before": false,
+        "after": true
+      }
+    ]
+  },
+  {
+    "questionId": "Q13",
+    "edits": [
+      {
+        "field": "question",
+        "note": "旧 Q12 存档题顺延为 Q13；增加 A–F 多选、G 互斥规则。"
+      }
+    ]
+  }
+]

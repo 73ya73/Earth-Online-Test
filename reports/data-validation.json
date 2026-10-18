@@ -1,8 +1,8 @@
 {
-  "datasetVersion": "1.1",
-  "source": "地球Online - 精神回血系统检测 (2).xlsx",
-  "questions": 12,
-  "options": 64,
+  "datasetVersion": "1.2",
+  "source": "分数 (7).xlsx",
+  "questions": 13,
+  "options": 70,
   "optionCounts": [
     4,
     7,
@@ -13,6 +13,7 @@
     4,
     5,
     7,
+    6,
     6,
     5,
     7
@@ -49,8 +50,9 @@
     "THINK": 3,
     "SAVE": 3
   },
-  "undefinedScoreCells": 361,
+  "undefinedScoreCells": 397,
   "warnings": [
+    "Q9/Q10 最多两选；Q13 A–F 多选、G 互斥。Q10-E/F 原始标签保留，展示采用效果反馈标签，待校准。REST/LUCK 是文档别名，内部沿用 Excel 的 RESET/LUCKY。",
     "空白分数保留为 null；仅累加明确数字，不为 null 赋分。空白含义仍需数据作者确认。",
     "Q9-D 标签 T02 暂停休整，明确分数 THINK=2；按原表保留。",
     "Q1-Q3 没有行为标签，保留 null，不自行编造。",
