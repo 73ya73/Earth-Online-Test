@@ -16,8 +16,8 @@ export function createHandler({origins,insert,logger=console,now=()=>new Date()}
  return async request=>{
   const origin=request.headers.get('origin'),allowed=origins.includes(origin);
   const headers={'Content-Type':'application/json','Cache-Control':'no-store','Vary':'Origin'};
-  if(allowed)Object.assign(headers,{'Access-Control-Allow-Origin':origin,'Access-Control-Allow-Methods':'POST, OPTIONS','Access-Control-Allow-Headers':'content-type','Access-Control-Max-Age':'600'});
-  const reply=(status,body)=>new Response(JSON.stringify(body),{status,headers});
+  if(allowed)Object.assign(headers,{'Access-Control-Allow-Origin':origin,'Access-Control-Allow-Methods':'POST, OPTIONS','Access-Control-Allow-Headers':'content-type','Access-Control-Max-Age':'600','Access-Control-Expose-Headers':'Retry-After'});
+  const reply=(status,body)=>new Response(JSON.stringify(body),{status,headers:{...headers,...(status===429?{'Retry-After':'60'}:{})}});
   if(!allowed)return reply(403,{error:'origin_not_allowed'});
   if(request.method==='OPTIONS')return new Response(null,{status:204,headers});
   if(request.method!=='POST')return reply(405,{error:'method_not_allowed'});
@@ -25,13 +25,20 @@ export function createHandler({origins,insert,logger=console,now=()=>new Date()}
   if(!/^application\/json(?:\s*;|$)/i.test(request.headers.get('content-type')||''))return reply(415,{error:'json_required'});
   if(Number(request.headers.get('content-length'))>MAX_BYTES)return reply(413,{error:'too_large'});
   let record;
-  try{record=validateSubmission(await readLimited(request),now());}catch(error){return reply(error.message==='too_large'?413:400,{error:'invalid_submission'});}
+  try{record=validateSubmission(await readLimited(request),now());}catch(error){logger.warn?.('[Earth Online] research', {status:'failed',category:'validation',reason:['invalid_record','invalid_time','invalid_questions','invalid_answers','invalid_scores','result_mismatch','score_mismatch','too_large','body_timeout'].includes(error.message)?error.message:'invalid_body'});return reply(error.message==='too_large'?413:400,{error:'invalid_submission'});}
+  const started=Date.now();
+  const diagnostic=(status,category,extra={})=>({submission_id:record.submission_id,status,category,duration_ms:Date.now()-started,...extra});
   try{
    const outcome=await insert(record);
-   if(outcome==='rate_limited')return reply(429,{error:'rate_limited'});
-   if(outcome!=='accepted')throw Error('unexpected_response');
-   // No SELECT endpoint, existing rows, duplicate details or database errors leak.
-   return reply(200,{ok:true});
-  }catch{logger.error('[Earth Online] submission storage failed');return reply(503,{error:'temporarily_unavailable'});}
+   if(outcome==='rate_limited'){logger.warn?.('[Earth Online] research',diagnostic('pending','rate_limited',{http_status:429}));return reply(429,{error:'rate_limited',submission_id:record.submission_id});}
+   if(!['inserted','already_saved'].includes(outcome))throw Object.assign(Error('invalid_rpc_ack'),{category:'database'});
+   logger.info?.('[Earth Online] research',diagnostic('saved',outcome,{http_status:200}));
+   return reply(200,{ok:true,submission_id:record.submission_id,status:outcome});
+  }catch(error){
+   const category=['id_conflict','permission','database_rejected','database','timeout','network'].includes(error.category)?error.category:'database';
+   const status=category==='id_conflict'?409:category==='permission'?403:category==='database_rejected'?422:503;
+   logger.error?.('[Earth Online] research',diagnostic('failed',category,{http_status:status,upstream_status:error.upstreamStatus||null,db_code:error.dbCode||null}));
+   return reply(status,{error:category,submission_id:record.submission_id});
+  }
  };
 }

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {createSubmission,submitOnce,researchConfig} from '../utils/research.js';
+import {createSubmission,researchConfig} from '../utils/research.js';
 import {calculate,KEYS} from '../scoring/engine.js';
 import {validateSubmission} from '../../supabase/functions/_shared/research.js';
 import {createHandler} from '../../supabase/functions/_shared/handler.js';
@@ -43,7 +43,7 @@ test('server rejects incomplete, extra, malformed, exclusive, inflated or spoofe
  change(p=>p.email='do-not-collect@example.test');change(p=>p.test_version='1.5');change(p=>p.submission_id='same');change(p=>p.submitted_at='invalid');
 });
 test('intake enforces exact origin, preflight, method, JSON, bytes and safe error replies',async()=>{
- let calls=0;const logs=[],handler=createHandler({origins:[origin],insert:async()=>{calls++;return 'accepted';},logger:{error:x=>logs.push(x)}});
+ let calls=0;const logs=[],handler=createHandler({origins:[origin],insert:async()=>{calls++;return 'inserted';},logger:{error:x=>logs.push(x)}});
  assert.equal((await handler(request(payload(),{headers:{origin:'https://evil.test'}}))).status,403);
  assert.equal((await handler(request(payload(),{headers:{origin:''}}))).status,403);
  const pre=await handler(new Request(endpoint,{method:'OPTIONS',headers:{origin}}));assert.equal(pre.status,204);assert.equal(pre.headers.get('access-control-allow-origin'),origin);
@@ -52,7 +52,7 @@ test('intake enforces exact origin, preflight, method, JSON, bytes and safe erro
  assert.equal((await handler(request('x'.repeat(8193)))).status,413);
  assert.equal((await handler(request('{'))).status,400);
  assert.equal(calls,0);
- const p=payload(),good=await handler(request(p));assert.equal(good.status,200);assert.deepEqual(await good.json(),{ok:true});assert.equal(calls,1);
+ const p=payload(),good=await handler(request(p));assert.equal(good.status,200);assert.deepEqual(await good.json(),{ok:true,submission_id:p.submission_id,status:'inserted'});assert.equal(calls,1);
  const broken=createHandler({origins:[origin],insert:async()=>{throw Error('secret database details');},logger:{error:x=>logs.push(x)}});
  const fail=await broken(request(p));assert.equal(fail.status,503);assert.equal((await fail.text()).includes('secret'),false);assert.equal(logs.length,1);
 });
@@ -62,7 +62,7 @@ test('intake rejects oversized streaming bodies without trusting content-length'
  assert.equal((await handler(request(stream,{body:stream,duplex:'half'}))).status,413);assert.equal(calls,0);
 });
 test('intake applies bounded malformed-request burst limit and global quota outcome',async()=>{
- let time=0;const handler=createHandler({origins:[origin],now:()=>new Date(time),insert:async()=> 'accepted'});
+ let time=0;const handler=createHandler({origins:[origin],now:()=>new Date(time),insert:async()=> 'inserted'});
  for(let i=0;i<120;i++)assert.equal((await handler(request('{}'))).status,400);
  assert.equal((await handler(request(payload()))).status,429);time=60000;assert.equal((await handler(request(payload()))).status,200);
  const globalLimit=createHandler({origins:[origin],insert:async()=> 'rate_limited'});assert.equal((await globalLimit(request(payload()))).status,429);
@@ -71,20 +71,4 @@ test('browser configuration fails closed unless explicitly enabled with a safe U
  assert.equal(researchConfig({}).enabled,false);assert.equal(researchConfig({VITE_RESEARCH_ENABLED:'true'}).enabled,false);
  for(const url of ['javascript:alert(1)','http://evil.test/','https://key@evil.test/','https://evil.test/?token=secret'])assert.equal(researchConfig({VITE_RESEARCH_ENABLED:'true',VITE_RESEARCH_FUNCTION_URL:url}).enabled,false);
  assert.equal(researchConfig({VITE_RESEARCH_ENABLED:'true',VITE_RESEARCH_FUNCTION_URL:endpoint}).enabled,true);
-});
-test('browser submits once across concurrency/re-entry/refresh; omits cookies and referrer',async()=>{
- const p=payload(),store=storage();let calls=0,options;
- const config={endpoint,storage:store,fetcher:async(_url,opt)=>{calls++;options=opt;await new Promise(r=>setTimeout(r,10));return {ok:true,json:async()=>({ok:true})};}};
- const results=await Promise.all([submitOnce(p,config),submitOnce(p,config)]);assert.equal(calls,1);assert.equal(results[0].status,'sent');assert.equal(results[1].status,'skipped');
- assert.equal(options.credentials,'omit');assert.equal(options.referrerPolicy,'no-referrer');assert.equal(JSON.parse(options.body).submission_id,p.submission_id);
- // Persisted marker is checked even without a prior in-memory attempt for that UUID.
- const refresh={...payload(),submission_id:randomUUID()};store.setItem('earth-recharge-submitted-v1:'+refresh.submission_id,'attempted');assert.equal((await submitOnce(refresh,config)).status,'skipped');assert.equal(calls,1);
- assert.equal((await submitOnce(payload(),config)).status,'sent');assert.equal(calls,2);
-});
-test('failure/timeout never throw or retry, and diagnostic logs contain no answers',async()=>{
- const logs=[],logger={warn:(...x)=>logs.push(x.join(' '))};let calls=0;const p=payload();
- const config={endpoint,storage:storage(),logger,fetcher:async()=>{calls++;throw Error(JSON.stringify(p));}};
- assert.equal((await submitOnce(p,config)).status,'failed');assert.equal((await submitOnce(p,config)).status,'skipped');assert.equal(calls,1);assert.equal(logs.join().includes(p.submission_id),false);
- const timed=await submitOnce(payload(),{endpoint,storage:storage(),logger,timeoutMs:10,fetcher:(_u,{signal})=>new Promise((resolve,reject)=>signal.addEventListener('abort',()=>reject(Object.assign(Error(),{name:'AbortError'}))))});assert.equal(timed.code,'timeout');
- const blocked={getItem(){throw Error();},setItem(){throw Error();}};assert.equal((await submitOnce(payload(),{endpoint,storage:blocked,logger,fetcher:async()=>({ok:true,json:async()=>({ok:true})})})).status,'sent');
 });

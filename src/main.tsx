@@ -1,7 +1,9 @@
 import React,{useState,useEffect} from 'react';
-import {createSubmission,researchConfig,submitOnce} from './utils/research.js';
+import {createSubmission,researchConfig} from './utils/research.js';
+import {createResearchQueue} from './utils/researchQueue.js';
 import './research.css';
 const research=researchConfig(import.meta.env);
+const researchQueue=createResearchQueue({endpoint:research.endpoint,debug:import.meta.env.DEV});
 import {createRoot} from 'react-dom/client';
 import questions from './data/questions.json';
 import {SavesWindow,SaveComplete,LegacySave} from './components/SavesWindow';
@@ -34,9 +36,9 @@ function App(){
  function removeSave(id:string){try{setArchiveState({records:deleteArchive(id),error:''});return true;}catch(e:any){setArchiveState((s:any)=>({...s,error:'删除失败：'+e.message}));setNotice('删除失败，原有记录未删除。');return false;}}
  function saveToArchive(){try{const record=createArchive({sessionId,createdAt:completedAt,answers,questions,result:currentResult,profiles:resultProfiles,display:presentation(currentResult)}),saved=writeArchive(record);setArchiveState({records:saved.records,error:''});if(saved.duplicate)setNotice('本次结果已存档，可在我的存档中查看。');else setSaveComplete(true);}catch(e:any){setNotice('存档失败：'+e.message);}}
  function start(){setResearchSubmission(null);setAppActivation(n=>n+1);setAnswers({});setIndex(0);setSessionId(newId());setCompletedAt(null);setSelectedArchive(null);setSavesState('closed');setPage('quiz');}
- function finish(){if(!complete(questions,answers)){setIndex(questions.findIndex(question=>!answerIds(question,answers[question.questionId]).length));setNotice('请先完成所有题目。');return;}setCompletedAt(new Date().toISOString());if(research.enabled&&!researchSubmission){try{setResearchSubmission(createSubmission(questions,answers));}catch{console.warn('[Earth Online] statistical submission unavailable');}}setPage('loading');}
+ function finish(){if(!complete(questions,answers)){setIndex(questions.findIndex(question=>!answerIds(question,answers[question.questionId]).length));setNotice('请先完成所有题目。');return;}setCompletedAt(new Date().toISOString());if(research.enabled&&!researchSubmission){try{const payload=createSubmission(questions,answers);researchQueue.enqueue(payload);setResearchSubmission(payload);persist(answers,index,'result',{sessionId,completedAt:new Date().toISOString(),researchSubmission:payload});void researchQueue.flush();}catch{console.warn('[Earth Online] statistical submission unavailable');}}setPage('loading');}
  useEffect(()=>{if(page==='quiz'||page==='result')persist(answers,index,page,{sessionId,completedAt,researchSubmission});},[answers,index,page,sessionId,completedAt,researchSubmission]);
- useEffect(()=>{if(research.enabled&&page==='result'&&researchSubmission)void submitOnce(researchSubmission,{endpoint:research.endpoint});},[page,researchSubmission]);
+ useEffect(()=>{if(!research.enabled)return;researchQueue.recover(initial?.researchSubmission);return researchQueue.start();},[]);
  useEffect(()=>{if(page==='loading'){const t=setTimeout(()=>setPage('result'),700);return()=>clearTimeout(t);}},[page]);
  useEffect(()=>{window.scrollTo(0,0);document.getElementById('page-title')?.focus({preventScroll:true});},[page,index]);
  useEffect(()=>{if(notice){const t=setTimeout(()=>setNotice(''),3500);return()=>clearTimeout(t);}},[notice]);

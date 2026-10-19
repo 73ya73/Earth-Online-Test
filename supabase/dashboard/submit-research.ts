@@ -1,7 +1,7 @@
 // @ts-nocheck -- Generated JavaScript bundle in the Dashboard TypeScript entrypoint.
 // GENERATED for Supabase Dashboard: paste this ENTIRE file into submit-research/index.ts.
 // Source: supabase/functions/submit-research/index.ts and _shared/. No secret values included.
-// Source SHA-256: 601cbf8422a116f4c1f2ba6169132a43a5d048fbba1d7a06f6c8016445a1dcd7
+// Source SHA-256: 5a00324fa150f470e8aedd5daaf420b4733b983a2a36dbf9087322947aa1cc84
 // Regenerate: node scripts/sync-research.mjs && node scripts/bundle-research.mjs
 
 // supabase/functions/_shared/questions.js
@@ -131,8 +131,8 @@ function createHandler({ origins: origins2, insert, logger = console, now = () =
   return async (request) => {
     const origin = request.headers.get("origin"), allowed = origins2.includes(origin);
     const headers = { "Content-Type": "application/json", "Cache-Control": "no-store", "Vary": "Origin" };
-    if (allowed) Object.assign(headers, { "Access-Control-Allow-Origin": origin, "Access-Control-Allow-Methods": "POST, OPTIONS", "Access-Control-Allow-Headers": "content-type", "Access-Control-Max-Age": "600" });
-    const reply = (status, body) => new Response(JSON.stringify(body), { status, headers });
+    if (allowed) Object.assign(headers, { "Access-Control-Allow-Origin": origin, "Access-Control-Allow-Methods": "POST, OPTIONS", "Access-Control-Allow-Headers": "content-type", "Access-Control-Max-Age": "600", "Access-Control-Expose-Headers": "Retry-After" });
+    const reply = (status, body) => new Response(JSON.stringify(body), { status, headers: { ...headers, ...status === 429 ? { "Retry-After": "60" } : {} } });
     if (!allowed) return reply(403, { error: "origin_not_allowed" });
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers });
     if (request.method !== "POST") return reply(405, { error: "method_not_allowed" });
@@ -148,16 +148,25 @@ function createHandler({ origins: origins2, insert, logger = console, now = () =
     try {
       record = validateSubmission(await readLimited(request), now());
     } catch (error) {
+      logger.warn?.("[Earth Online] research", { status: "failed", category: "validation", reason: ["invalid_record", "invalid_time", "invalid_questions", "invalid_answers", "invalid_scores", "result_mismatch", "score_mismatch", "too_large", "body_timeout"].includes(error.message) ? error.message : "invalid_body" });
       return reply(error.message === "too_large" ? 413 : 400, { error: "invalid_submission" });
     }
+    const started = Date.now();
+    const diagnostic = (status, category, extra = {}) => ({ submission_id: record.submission_id, status, category, duration_ms: Date.now() - started, ...extra });
     try {
       const outcome = await insert(record);
-      if (outcome === "rate_limited") return reply(429, { error: "rate_limited" });
-      if (outcome !== "accepted") throw Error("unexpected_response");
-      return reply(200, { ok: true });
-    } catch {
-      logger.error("[Earth Online] submission storage failed");
-      return reply(503, { error: "temporarily_unavailable" });
+      if (outcome === "rate_limited") {
+        logger.warn?.("[Earth Online] research", diagnostic("pending", "rate_limited", { http_status: 429 }));
+        return reply(429, { error: "rate_limited", submission_id: record.submission_id });
+      }
+      if (!["inserted", "already_saved"].includes(outcome)) throw Object.assign(Error("invalid_rpc_ack"), { category: "database" });
+      logger.info?.("[Earth Online] research", diagnostic("saved", outcome, { http_status: 200 }));
+      return reply(200, { ok: true, submission_id: record.submission_id, status: outcome });
+    } catch (error) {
+      const category = ["id_conflict", "permission", "database_rejected", "database", "timeout", "network"].includes(error.category) ? error.category : "database";
+      const status = category === "id_conflict" ? 409 : category === "permission" ? 403 : category === "database_rejected" ? 422 : 503;
+      logger.error?.("[Earth Online] research", diagnostic("failed", category, { http_status: status, upstream_status: error.upstreamStatus || null, db_code: error.dbCode || null }));
+      return reply(status, { error: category, submission_id: record.submission_id });
     }
   };
 }
@@ -168,12 +177,26 @@ var key = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 var origins = (Deno.env.get("RESEARCH_ALLOWED_ORIGINS") || "").split(",").map((s) => s.trim()).filter(Boolean);
 if (!url || !key || !origins.length) throw new Error("Research server configuration missing");
 Deno.serve(createHandler({ origins, insert: async (record) => {
-  const response = await fetch(`${url}/rest/v1/rpc/store_research_submission`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", apikey: key, Authorization: `Bearer ${key}` },
-    body: JSON.stringify({ record }),
-    signal: AbortSignal.timeout(5e3)
-  });
-  if (!response.ok) throw new Error("storage_unavailable");
-  return await response.json();
+  try {
+    const response = await fetch(`${url}/rest/v1/rpc/store_research_submission_v2`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", apikey: key, Authorization: `Bearer ${key}` },
+      body: JSON.stringify({ record }),
+      signal: AbortSignal.timeout(1e4)
+    });
+    if (!response.ok) {
+      let code = "";
+      try {
+        const body = await response.json();
+        if (/^[A-Z0-9]{5}$/.test(body?.code)) code = body.code;
+      } catch {
+      }
+      const category = code === "23505" ? "id_conflict" : code === "42501" || [401, 403].includes(response.status) ? "permission" : code.startsWith("22") || code.startsWith("23") ? "database_rejected" : "database";
+      throw Object.assign(new Error(category), { category, upstreamStatus: response.status, dbCode: code });
+    }
+    return await response.json();
+  } catch (error) {
+    if (error.category) throw error;
+    throw Object.assign(new Error("RPC transport failed"), { category: ["TimeoutError", "AbortError"].includes(error.name) ? "timeout" : "network" });
+  }
 } }));

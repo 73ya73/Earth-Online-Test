@@ -70,4 +70,6 @@ My Saves 是独立 XP 文件夹窗口，含地址栏、像素文件网格、状�
 
 只提交随机编号、服务端接收时间、13 题选项数组、结果数组和六维原始分数，不增加 test_version。Edge 使用与前端一致的题库及算法重新计算，校验后通过受限 RPC 写入。并列／混合结果保留全部候选，探索结果为 `["EXPLORING"]`。旧完成结果与本地历史存档不补传。
 
-同一完成记录刷新不重复请求，新一轮测试生成新编号；失败只记录错误类别，不阻碍结果、存档或 PNG，不自动重试，因此网络失败时可能缺少该份统计。生产测试通过 `EXPECT_RESEARCH_UPLOAD=true` 检查实际构建启用且端点正确。发布检查见 `reports/research-release-checks.md`。
+同一完整测试先写入独立本地待上传队列，再后台提交。刷新、关闭后重访与恢复联网会恢复尚有重试预算的记录；所有尝试沿用原 UUID。仅在服务端明确确认 inserted/already_saved 且编号匹配后移除队列记录，网络和临时服务错误最多请求三次，次数跨刷新保存。结果、存档和 PNG 不等待上传。失败记录保留，不无限重试；浏览器禁用或清除网站存储时无法保证恢复。
+
+用户已确认云端 SQL 与 Edge 部署完成，并看到 saved/inserted 日志；本次获授权通过现有 main/Pages 工作流发布前端，实际发布结果以对应 GitHub Actions 为准。增量 SQL、单文件函数、发布顺序及验证方法见 [docs/reliable-submission-deployment.md](docs/reliable-submission-deployment.md)。历史发布检查不代表本次已上线。

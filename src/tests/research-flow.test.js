@@ -8,7 +8,7 @@ const asset=html.match(/src="([^" ]+\.js)"/)[1].split('/').pop();
 const script=fs.readFileSync(new URL(`../../dist/assets/${asset}`,import.meta.url),'utf8');
 const delay=ms=>new Promise(r=>setTimeout(r,ms));
 const button=(w,text)=>{const b=[...w.document.querySelectorAll('button')].find(b=>b.textContent.includes(text));assert.ok(b,text);return b;};
-async function boot(seed={},fetcher=async()=>({ok:true,json:async()=>({ok:true})})){
+async function boot(seed={},fetcher=async(_u,o)=>({ok:true,status:200,json:async()=>({ok:true,status:'inserted',submission_id:JSON.parse(o.body).submission_id})})){
  const dom=new JSDOM('<div id="root"></div>',{url:'http://localhost/',runScripts:'outside-only',pretendToBeVisual:true});const w=dom.window;
  w.scrollTo=()=>{};w.fetch=fetcher;w.HTMLCanvasElement.prototype.getContext=()=>new Proxy({}, {get:(_,k)=>k==='createLinearGradient'?()=>({addColorStop(){}}):k==='measureText'?()=>({width:20}):()=>{},set:()=>true});
  for(const [k,v] of Object.entries(seed))w.localStorage.setItem(k,v);
@@ -19,7 +19,7 @@ const pending=()=>({'earth-recharge-v1.5':JSON.stringify({version:'1.5',answers:
 async function finish(w){button(w,'继续上次').click();await delay(30);w.document.querySelector('input[value="A"]').click();await delay(25);button(w,'查看我的回血人格').click();await delay(850);}
 
 test('real production UI discloses mode before start; completion auto-submits only when configured',async()=>{
- const posts=[],dom=await boot(pending(),async(url,options)=>{posts.push({url,options});return {ok:true,json:async()=>({ok:true})};});const w=dom.window;
+ const posts=[],dom=await boot(pending(),async(url,options)=>{posts.push({url,options});return {ok:true,status:200,json:async()=>({ok:true,status:'inserted',submission_id:JSON.parse(options.body).submission_id})};});const w=dom.window;
  const notice=w.document.querySelector('.intro .setup-note');assert.ok(notice);const enabled=notice.textContent.includes('系统会自动记录');assert.equal(posts.length,0);
  if(process.env.EXPECT_RESEARCH_UPLOAD==='true')assert.equal(enabled,true,'The production bundle must enable research upload and disclose it before Start Setup');
  assert.equal(w.document.querySelector('.intro .data-notice'),null);assert.ok(notice.querySelector('.pixel-icon'));assert.match(notice.textContent,/欢迎使用精神回血检测向导/);if(enabled)assert.equal(notice.querySelector('p').textContent,'本测试为匿名趣味探索，非心理诊断。完成测试后，系统会自动记录本次答题选项及测试结果，用于统计和优化体验。');
@@ -37,11 +37,11 @@ test('failed statistical upload does not block real result or archive; restartin
  button(w,'保存到我的存档').click();await delay(30);assert.match(w.document.body.textContent,/Save Complete/);button(w,'继续探索').click();await delay(30);
  button(w,'重新测试').click();await delay(30);assert.ok(w.localStorage.getItem('earth-recharge-saves-v1'));button(w,'开始测试').click();await delay(25);
  for(let i=0;i<13;i++){w.document.querySelector('input[value="A"]').click();await delay(20);button(w,i===12?'查看我的回血人格':'下一题').click();await delay(20);}await delay(850);
- assert.ok(w.document.querySelector('.results'));assert.equal(calls,enabled?2:0);if(enabled)assert.notEqual(records[0].submission_id,records[1].submission_id);w.close();
+ assert.ok(w.document.querySelector('.results'));if(enabled){const ids=new Set(records.map(r=>r.submission_id));assert.equal(ids.size,2);}else assert.equal(calls,0);w.close();
 });
 
 test('two newly completed tests submit two distinct records while refresh submits nothing',async()=>{
- const records=[],fetcher=async(_u,o)=>{records.push(JSON.parse(o.body));return {ok:true,json:async()=>({ok:true})};};
+ const records=[],fetcher=async(_u,o)=>{records.push(JSON.parse(o.body));return {ok:true,status:200,json:async()=>({ok:true,status:'inserted',submission_id:JSON.parse(o.body).submission_id})};};
  const dom=await boot(pending(),fetcher),w=dom.window,enabled=w.document.querySelector('.intro .setup-note').textContent.includes('系统会自动记录');
  await finish(w);assert.equal(records.length,enabled?1:0);const seed=snapshot(w);w.close();
  const refreshed=await boot(seed,fetcher),r=refreshed.window;button(r,'继续上次').click();await delay(35);assert.equal(records.length,enabled?1:0);
@@ -56,4 +56,27 @@ test('old completed results and historical archive do not backfill participant r
  button(w,'继续上次').click();await delay(35);assert.ok(w.document.querySelector('.results'));assert.equal(calls,0);
  button(w,'保存到我的存档').click();await delay(30);button(w,'查看我的存档').click();await delay(30);
  const file=w.document.querySelector('.sav-file');assert.ok(file);file.dispatchEvent(new w.MouseEvent('dblclick',{bubbles:true,detail:2}));await delay(35);assert.match(w.document.body.textContent,/Historical Save/);assert.equal(calls,0);w.close();
+});
+
+test('offline completion is queued before loading finishes; closing and reopening welcome resumes same ID',async()=>{
+ let calls=0;const dom=await boot(pending(),async()=>{calls++;throw Error('must not fetch offline');}),w=dom.window;
+ const enabled=w.document.querySelector('.intro .setup-note').textContent.includes('系统会自动记录');
+ Object.defineProperty(w.navigator,'onLine',{get:()=>false,configurable:true});
+ button(w,'继续上次').click();await delay(25);w.document.querySelector('input[value="A"]').click();await delay(25);button(w,'查看我的回血人格').click();await delay(30);
+ assert.ok(w.document.querySelector('.loading'));assert.equal(calls,0);
+ const saved=snapshot(w),keys=Object.keys(saved).filter(k=>k.startsWith('earth-recharge-outbox-v2:'));
+ assert.equal(keys.length,enabled?1:0);const id=enabled?JSON.parse(saved[keys[0]]).payload.submission_id:null;w.close();
+ const posted=[],newDom=await boot(saved,async(_u,o)=>{const p=JSON.parse(o.body);posted.push(p);return {ok:true,status:200,json:async()=>({ok:true,status:'already_saved',submission_id:p.submission_id})};});
+ await delay(80);assert.ok(newDom.window.document.querySelector('.welcome'));assert.equal(posted.length,enabled?1:0);
+ if(enabled){assert.equal(posted[0].submission_id,id);assert.equal(Object.keys(snapshot(newDom.window)).filter(k=>k.startsWith('earth-recharge-outbox-v2:')).length,0);}
+ newDom.window.close();
+});
+
+test('legacy attempted record resumes automatically, old sent marker does not re-upload',async()=>{
+ const {createSubmission}=await import('../utils/research.js');const a=Object.fromEntries(questions.map(q=>[q.questionId,['A']]));const p=createSubmission(questions,a);
+ for(const marker of ['attempted','sent']){
+  let calls=0;const seed={'earth-recharge-v1.5':JSON.stringify({version:'1.5',answers:a,index:12,page:'result',researchSubmission:p}),['earth-recharge-submitted-v1:'+p.submission_id]:marker};
+  const dom=await boot(seed,async(_u,o)=>{calls++;assert.equal(JSON.parse(o.body).submission_id,p.submission_id);return {ok:true,status:200,json:async()=>({ok:true,status:'already_saved',submission_id:p.submission_id})};});
+  const enabled=dom.window.document.querySelector('.intro .setup-note').textContent.includes('系统会自动记录');await delay(40);assert.equal(calls,enabled&&marker==='attempted'?1:0);dom.window.close();
+ }
 });
