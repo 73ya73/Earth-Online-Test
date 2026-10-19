@@ -13,9 +13,10 @@ const asset=html.match(/src="([^" ]+\.js)"/)[1];
 // The build may use a Pages repository prefix; the local bundle still lives in dist/assets.
 const script=fs.readFileSync(new URL(`assets/${asset.split('/').pop()}`,dist),'utf8');
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
-async function setup(storage,legacy=false,storageKey,extra={}){
+async function setup(storage,legacy=false,storageKey,extra={},hooks={}){
  const dom=new JSDOM('<!doctype html><html><body><div id="root"></div></body></html>',{url:'http://localhost/',runScripts:'outside-only',pretendToBeVisual:true});
  const w=dom.window;w.scrollTo=()=>{};w.HTMLCanvasElement.prototype.getContext=()=>new Proxy({}, {get:(_,key)=>key==='createLinearGradient'?()=>({addColorStop(){}}):key==='measureText'?text=>({width:text.length*30}):()=>{},set:()=>true});
+ w.fetch=hooks.fetch||(async()=>({ok:true,json:async()=>({ok:true})}));
  if(storage){try{const saved=JSON.parse(storage);if(saved.version===DATA_VERSION)for(const key of Object.keys(saved.answers))if(typeof saved.answers[key]==='string')saved.answers[key]=[saved.answers[key]];storage=JSON.stringify(saved);}catch{}}
  if(storage)w.localStorage.setItem(storageKey||(legacy?'earth-recharge-pilot-1':'earth-recharge-v1.5'),storage);
  for(const [key,value] of Object.entries(extra))w.localStorage.setItem(key,value);

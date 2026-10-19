@@ -1,0 +1,13 @@
+{
+  "candidateFiles": 89,
+  "historyCommits": 6,
+  "productionFiles": 4,
+  "findings": [],
+  "production": {
+    "asset": "/Earth-Online-Test/assets/index-28CybN9_.js",
+    "correctEndpoint": true,
+    "disclosure": true,
+    "workflowEnabled": true,
+    "basePreserved": true
+  }
+}

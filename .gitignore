@@ -25,6 +25,9 @@ service_account*.json
 secrets.json
 
 # Local tool state, logs and operating-system files
+supabase/.temp/
+supabase/.branches/
+.supabase/
 .sites-runtime/
 .sites-checkout/
 .sites-checkout-*/

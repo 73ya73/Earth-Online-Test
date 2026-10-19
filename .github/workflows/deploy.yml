@@ -23,7 +23,11 @@ jobs:
       - run: npm run build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          VITE_RESEARCH_ENABLED: 'true'
+          VITE_RESEARCH_FUNCTION_URL: https://qwkwtcbkxjlyelvbvwpv.supabase.co/functions/v1/submit-research
       - run: npm test
+        env:
+          EXPECT_RESEARCH_UPLOAD: 'true'
       - run: npm run simulate
       - uses: actions/upload-pages-artifact@v3
         with:
