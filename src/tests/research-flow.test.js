@@ -20,9 +20,9 @@ async function finish(w){button(w,'继续上次').click();await delay(30);w.docu
 
 test('real production UI discloses mode before start; completion auto-submits only when configured',async()=>{
  const posts=[],dom=await boot(pending(),async(url,options)=>{posts.push({url,options});return {ok:true,json:async()=>({ok:true})};});const w=dom.window;
- const notice=w.document.querySelector('.intro .data-notice');assert.ok(notice);const enabled=notice.textContent.includes('系统会自动记录');assert.equal(posts.length,0);
+ const notice=w.document.querySelector('.intro .setup-note');assert.ok(notice);const enabled=notice.textContent.includes('系统会自动记录');assert.equal(posts.length,0);
  if(process.env.EXPECT_RESEARCH_UPLOAD==='true')assert.equal(enabled,true,'The production bundle must enable research upload and disclose it before Start Setup');
- if(enabled){assert.match(notice.textContent,/无需提供姓名或联系方式/);assert.match(notice.textContent,/180 天/);assert.match(notice.textContent,/不承诺完全匿名/);}
+ assert.equal(w.document.querySelector('.intro .data-notice'),null);assert.ok(notice.querySelector('.pixel-icon'));assert.match(notice.textContent,/欢迎使用精神回血检测向导/);if(enabled)assert.equal(notice.querySelector('p').textContent,'本测试为匿名趣味探索，非心理诊断。完成测试后，系统会自动记录本次答题选项及测试结果，用于统计和优化体验。');
  await finish(w);assert.ok(w.document.querySelector('.results'));assert.equal(posts.length,enabled?1:0);
  if(enabled){const record=JSON.parse(posts[0].options.body);assert.equal(Object.keys(record.answers).length,13);assert.equal(Object.keys(record).length,5);assert.ok(Array.isArray(record.result_type));assert.equal(posts[0].url,'https://qwkwtcbkxjlyelvbvwpv.supabase.co/functions/v1/submit-research');}
  button(w,'首页').click();await delay(25);button(w,'继续上次').click();await delay(30);assert.equal(posts.length,enabled?1:0);
@@ -30,7 +30,7 @@ test('real production UI discloses mode before start; completion auto-submits on
  button(refreshed.window,'保存到我的存档').click();await delay(30);assert.match(refreshed.window.document.body.textContent,/Save Complete/);assert.ok(refreshed.window.localStorage.getItem('earth-recharge-saves-v1'));refreshed.window.close();
 });
 test('failed statistical upload does not block real result or archive; restarting gets fresh UUID',async()=>{
- let calls=0;const records=[],dom=await boot(pending(),async(_u,o)=>{calls++;records.push(JSON.parse(o.body));throw Error('network down');});const w=dom.window,enabled=w.document.querySelector('.data-notice').textContent.includes('系统会自动记录');
+ let calls=0;const records=[],dom=await boot(pending(),async(_u,o)=>{calls++;records.push(JSON.parse(o.body));throw Error('network down');});const w=dom.window,enabled=w.document.querySelector('.intro .setup-note').textContent.includes('系统会自动记录');
  await finish(w);assert.ok(button(w,'保存结果图片'));assert.ok(button(w,'分享 / 复制链接'));assert.equal(calls,enabled?1:0);
  let downloaded='';Object.defineProperty(w.document,'fonts',{value:{ready:Promise.resolve()}});w.HTMLCanvasElement.prototype.toBlob=function(callback){assert.equal(this.width,1080);assert.equal(this.height,1350);callback(new w.Blob(['png'],{type:'image/png'}));};w.URL.createObjectURL=()=> 'blob:failure-result';w.URL.revokeObjectURL=()=>{};w.HTMLAnchorElement.prototype.click=function(){downloaded=this.download;};
  button(w,'保存结果图片').click();await delay(50);assert.equal(downloaded,'地球Online-回血人格.png');assert.match(w.document.body.textContent,/结果图片已生成/);assert.equal(calls,enabled?1:0);
@@ -42,7 +42,7 @@ test('failed statistical upload does not block real result or archive; restartin
 
 test('two newly completed tests submit two distinct records while refresh submits nothing',async()=>{
  const records=[],fetcher=async(_u,o)=>{records.push(JSON.parse(o.body));return {ok:true,json:async()=>({ok:true})};};
- const dom=await boot(pending(),fetcher),w=dom.window,enabled=w.document.querySelector('.data-notice').textContent.includes('系统会自动记录');
+ const dom=await boot(pending(),fetcher),w=dom.window,enabled=w.document.querySelector('.intro .setup-note').textContent.includes('系统会自动记录');
  await finish(w);assert.equal(records.length,enabled?1:0);const seed=snapshot(w);w.close();
  const refreshed=await boot(seed,fetcher),r=refreshed.window;button(r,'继续上次').click();await delay(35);assert.equal(records.length,enabled?1:0);
  button(r,'重新测试').click();await delay(25);button(r,'开始测试').click();await delay(25);
