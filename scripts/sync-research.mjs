@@ -1,7 +1,7 @@
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 const root=new URL('../',import.meta.url),shared=new URL('supabase/functions/_shared/',root);
 await mkdir(new URL('scoring/',shared),{recursive:true});
-for(const name of ['answers.js','engine.js']){
+for(const name of ['answers.js','engine.js','v17.js','v17-config.js']){
  const original=await readFile(new URL(`src/scoring/${name}`,root),'utf8');
  await writeFile(new URL(`scoring/${name}`,shared),original);
 }

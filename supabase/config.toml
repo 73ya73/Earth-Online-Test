@@ -1,3 +1,7 @@
 [functions.submit-research]
 # Public anonymous intake. Origin checks are not authentication; no key in React.
 verify_jwt = false
+
+# Prepared only: deploy separately after V1.7 SQL and algorithm approval.
+[functions.submit-research-v17]
+verify_jwt = false

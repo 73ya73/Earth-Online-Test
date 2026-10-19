@@ -1,19 +1,45 @@
-import React,{useState,useEffect,useRef} from 'react';
-import {Artwork} from './Artwork';
-import {PixelIcon} from './PixelIcon';
-import {DesktopItem} from './DesktopItem';
-import {XPDialog} from './XPDialog';
-import {archiveArt,archiveTitle,archiveFilename,formatDate} from '../utils/archives.js';
-export function SavesWindow({state,records,error,onState,onOpen,onDelete,onStart}:{state:string;records:any[];error:string;onState:(s:string)=>void;onOpen:(r:any)=>void;onDelete:(id:string)=>boolean;onStart:()=>void}){
- const [maximized,setMaximized]=useState(false),[selected,setSelected]=useState<string|null>(null),[deleting,setDeleting]=useState<any>(null);
- const ref=useRef<HTMLElement>(null);
- useEffect(()=>{if(state==='open'){const selectedFile=ref.current?.querySelector<HTMLElement>('.sav-file[aria-pressed="true"]');(selectedFile||ref.current?.querySelector<HTMLElement>('.sav-file,.saves-empty button'))?.focus();}},[state,records.length]);
- const item=records.find(r=>r.id===selected);
- return <><section className={`xp-window saves-window ${maximized?'saves-maximized':''}`} hidden={state!=='open'} role="region" aria-label="我的存档 — My Saves"><div className="titlebar"><div className="window-title"><PixelIcon kind="folder"/><span>我的存档 — My Saves</span></div><div className="window-controls"><button className="minimize" aria-label="最小化我的存档" onClick={()=>onState('minimized')}><span/></button><button className="maximize" aria-label={maximized?'还原我的存档':'最大化我的存档'} onClick={()=>setMaximized(!maximized)}><span className={maximized?'restore':''}/></button><button className="close" aria-label="关闭我的存档" onClick={()=>onState('closed')}>×</button></div></div><div className="saves-address"><span>地址</span><PixelIcon kind="folder"/><span>我的电脑 <b>›</b> Earth Online <b>›</b> 我的存档</span></div><div className="saves-toolbar"><button className="secondary" disabled={!item} onClick={()=>onOpen(item)}>打开存档</button><button className="secondary" disabled={!item} onClick={()=>setDeleting(item)}>删除存档</button><span>YOUR JOURNEY · 已保存 {records.length} 段地球经历</span></div><div className="saves-content">{error&&<p className="archive-error" role="alert">{error}</p>}{records.length?<div className="sav-grid">{records.map(record=><DesktopItem key={record.id} className={`sav-file ${selected===record.id?'selected':''}`} aria-label={`${archiveFilename(record)} ${archiveTitle(record)}`} aria-pressed={selected===record.id} onSelect={()=>setSelected(record.id)} onActivate={()=>onOpen(record)} onKeyDown={e=>{if(e.key==='Delete'){e.preventDefault();setSelected(record.id);setDeleting(record);}}}><Artwork type={archiveArt(record)} commands={record.snapshot?.artwork} label={archiveTitle(record)}/><strong>{archiveFilename(record)}</strong><span>{archiveTitle(record)}</span><time>{formatDate(record.createdAt)}</time><small>{record.kind==='full'?record.snapshot.status.top.slice(0,1).map((a:any)=>`${a.label} ${a.percent}%`).join(''):'旧存档 · 部分信息'} · v{record.version}</small></DesktopItem>)}</div>:!error&&<div className="saves-empty"><PixelIcon kind="folder"/><h2>这里还没有存档。</h2><p>每个玩家的故事都从第一次记录开始。</p><button className="primary" onClick={onStart}>开始精神回血检测</button></div>}</div><p className="local-save-note">本地存档仅保存在当前浏览器中。清除网站数据可能导致记录丢失，其他设备不会自动同步。</p><div className="saves-statusbar"><span>{records.length} 个存档文件</span><span>Local Storage</span></div></section>{deleting&&state==='open'&&<XPDialog title="确认删除存档" alert onClose={()=>setDeleting(null)}><div className="archive-dialog-copy"><PixelIcon kind="disk"/><div><h2>删除这份存档？</h2><p>{archiveFilename(deleting)}</p><p>删除后无法恢复，其他存档不会受到影响。</p></div></div><div className="dialog-actions"><button className="secondary" onClick={()=>setDeleting(null)}>取消</button><button className="primary" onClick={()=>{if(onDelete(deleting.id)){setDeleting(null);setSelected(null);}}}>删除此存档</button></div></XPDialog>}</>;
+import {t} from '../i18n/index.js';
+import React, { useState, useEffect, useRef } from 'react';
+import { Artwork } from './Artwork';
+import { PixelIcon } from './PixelIcon';
+import { DesktopItem } from './DesktopItem';
+import { XPDialog } from './XPDialog';
+import { archiveArt, archiveTitle, archiveFilename, formatDate } from '../utils/archives.js';
+export function SavesWindow({ state, records, error, onState, onOpen, onDelete, onStart }: {
+    state: string;
+    records: any[];
+    error: string;
+    onState: (s: string) => void;
+    onOpen: (r: any) => void;
+    onDelete: (id: string) => boolean;
+    onStart: () => void;
+}) {
+    const [maximized, setMaximized] = useState(false), [selected, setSelected] = useState<string | null>(null), [deleting, setDeleting] = useState<any>(null);
+    const ref = useRef<HTMLElement>(null);
+    useEffect(() => { if (state === 'open') {
+        const selectedFile = ref.current?.querySelector<HTMLElement>('.sav-file[aria-pressed="true"]');
+        (selectedFile || ref.current?.querySelector<HTMLElement>('.sav-file,.saves-empty button'))?.focus();
+    } }, [state, records.length]);
+    const item = records.find(r => r.id === selected);
+    return <><section className={`xp-window saves-window ${maximized ? 'saves-maximized' : ''}`} hidden={state !== 'open'} role="region" aria-label={t("我的存档 — My Saves")}><div className="titlebar"><div className="window-title"><PixelIcon kind="folder"/><span>{t("我的存档 — My Saves")}</span></div><div className="window-controls"><button className="minimize" aria-label={t("最小化我的存档")} onClick={() => onState('minimized')}><span /></button><button className="maximize" aria-label={maximized ? t("还原我的存档") : t("最大化我的存档")} onClick={() => setMaximized(!maximized)}><span className={maximized ? 'restore' : ''}/></button><button className="close" aria-label={t("关闭我的存档")} onClick={() => onState('closed')}>×</button></div></div><div className="saves-address"><span>{t("地址")}</span><PixelIcon kind="folder"/><span>{t("我的电脑")}<b>›</b> Earth Online <b>›</b>{t("我的存档")}</span></div><div className="saves-toolbar"><button className="secondary" disabled={!item} onClick={() => onOpen(item)}>{t("打开存档")}</button><button className="secondary" disabled={!item} onClick={() => setDeleting(item)}>{t("删除存档")}</button><span>{t("YOUR JOURNEY · 已保存")}{records.length}{t("段地球经历")}</span></div><div className="saves-content">{error && <p className="archive-error" role="alert">{error}</p>}{records.length ? <div className="sav-grid">{records.map(record => <DesktopItem key={record.id} className={`sav-file ${selected === record.id ? 'selected' : ''}`} aria-label={`${archiveFilename(record)} ${archiveTitle(record)}`} aria-pressed={selected === record.id} onSelect={() => setSelected(record.id)} onActivate={() => onOpen(record)} onKeyDown={e => { if (e.key === 'Delete') {
+        e.preventDefault();
+        setSelected(record.id);
+        setDeleting(record);
+    } }}><Artwork type={archiveArt(record)} commands={record.snapshot?.artwork} label={archiveTitle(record)}/><strong>{archiveFilename(record)}</strong><span>{archiveTitle(record)}</span><time>{formatDate(record.createdAt)}</time><small>{record.kind === 'full' ? record.snapshot.status.top.slice(0, 1).map((a: any) => `${t(a.label)} ${a.percent}%`).join('') : t("旧存档 · 部分信息")} · v{record.version}</small></DesktopItem>)}</div> : !error && <div className="saves-empty"><PixelIcon kind="folder"/><h2>{t("这里还没有存档。")}</h2><p>{t("每个玩家的故事都从第一次记录开始。")}</p><button className="primary" onClick={onStart}>{t("开始精神回血检测")}</button></div>}</div><p className="local-save-note">{t("本地存档仅保存在当前浏览器中。清除网站数据可能导致记录丢失，其他设备不会自动同步。")}</p><div className="saves-statusbar"><span>{records.length}{t("个存档文件")}</span><span>Local Storage</span></div></section>{deleting && state === 'open' && <XPDialog title={t("确认删除存档")} alert onClose={() => setDeleting(null)}><div className="archive-dialog-copy"><PixelIcon kind="disk"/><div><h2>{t("删除这份存档？")}</h2><p>{archiveFilename(deleting)}</p><p>{t("删除后无法恢复，其他存档不会受到影响。")}</p></div></div><div className="dialog-actions"><button className="secondary" onClick={() => setDeleting(null)}>{t("取消")}</button><button className="primary" onClick={() => { if (onDelete(deleting.id)) {
+        setDeleting(null);
+        setSelected(null);
+    } }}>{t("删除此存档")}</button></div></XPDialog>}</>;
 }
-export function SaveComplete({onFolder,onClose}:{onFolder:()=>void;onClose:()=>void}){
- return <XPDialog title="Earth Online · Save Complete" onClose={onClose}><div className="archive-dialog-copy"><PixelIcon kind="disk"/><div><h2>存档成功！</h2><p>你的本次地球 Online 经历已保存。</p><strong className="memory-bonus">SAVE COMPLETE · +1 MEMORY</strong></div></div><div className="save-complete-progress" aria-hidden="true"><i/></div><div className="dialog-actions"><button className="primary" onClick={onFolder}>查看我的存档</button><button className="secondary" onClick={onClose}>继续探索</button></div></XPDialog>;
+export function SaveComplete({ onFolder, onClose }: {
+    onFolder: () => void;
+    onClose: () => void;
+}) {
+    return <XPDialog title="Earth Online · Save Complete" onClose={onClose}><div className="archive-dialog-copy"><PixelIcon kind="disk"/><div><h2>{t("存档成功！")}</h2><p>{t("你的本次地球 Online 经历已保存。")}</p><strong className="memory-bonus">SAVE COMPLETE · +1 MEMORY</strong></div></div><div className="save-complete-progress" aria-hidden="true"><i /></div><div className="dialog-actions"><button className="primary" onClick={onFolder}>{t("查看我的存档")}</button><button className="secondary" onClick={onClose}>{t("继续探索")}</button></div></XPDialog>;
 }
-export function LegacySave({record,onBack,onReset}:{record:any;onBack:()=>void;onReset:()=>void}){
- return <section className="results legacy-save"><div className="historical-banner"><strong>Historical Save · 历史存档</strong><span>{formatDate(record.createdAt)} · v{record.version}</span></div><h1 id="page-title" tabIndex={-1}>{archiveTitle(record)}</h1><Artwork type={archiveArt(record)}/><p>这是旧版本留下的记录。缺失的字段保持为空，不使用当前题库重新判定或覆盖它。</p>{record.totals&&<table className="score-table-v11"><caption>旧存档中保存的原始分数</caption><tbody>{Object.entries(record.totals).filter(([,v])=>typeof v==='number').map(([k,v])=><tr key={k}><th>{k}</th><td>{String(v)}</td></tr>)}</tbody></table>}{record.answers&&<details><summary>查看已保存的原始答题编号</summary><pre>{JSON.stringify(record.answers,null,2)}</pre></details>}<p>该记录未包含可验证的完整结果快照，无法还原的图文、属性或题目不作补写。原始记录仍保留。</p><div className="result-actions"><button className="primary" onClick={onBack}>返回我的存档</button><button className="secondary" onClick={onReset}>重新开始测试</button></div></section>;
+export function LegacySave({ record, onBack, onReset }: {
+    record: any;
+    onBack: () => void;
+    onReset: () => void;
+}) {
+    return <section className="results legacy-save"><div className="historical-banner"><strong>{t("Historical Save · 历史存档")}</strong><span>{formatDate(record.createdAt)} · v{record.version}</span></div><h1 id="page-title" tabIndex={-1}>{archiveTitle(record)}</h1><Artwork type={archiveArt(record)}/><p>{t("这是旧版本留下的记录。缺失的字段保持为空，不使用当前题库重新判定或覆盖它。")}</p>{record.totals && <table className="score-table-v11"><caption>{t("旧存档中保存的原始分数")}</caption><tbody>{Object.entries(record.totals).filter(([, v]) => typeof v === 'number').map(([k, v]) => <tr key={k}><th>{k}</th><td>{String(v)}</td></tr>)}</tbody></table>}{record.answers && <details><summary>{t("查看已保存的原始答题编号")}</summary><pre>{JSON.stringify(record.answers, null, 2)}</pre></details>}<p>{t("该记录未包含可验证的完整结果快照，无法还原的图文、属性或题目不作补写。原始记录仍保留。")}</p><div className="result-actions"><button className="primary" onClick={onBack}>{t("返回我的存档")}</button><button className="secondary" onClick={onReset}>{t("重新开始测试")}</button></div></section>;
 }

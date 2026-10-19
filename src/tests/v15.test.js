@@ -26,7 +26,7 @@ test('Q10 exclusive shape does not imply disabled scoring; dataset scores remain
  assert.equal(calculate(copy,{Q10:['E']}).totals.ACT,2);assert.equal(calculate(copy,{Q10:['F']}).totals.ACT,0);
 });
 test('full archive snapshots are detached, persisted, and deduplicated by one test session',()=>{
- const storage=memory(),first=record(),saved=writeArchive(first,storage);assert.equal(saved.duplicate,false);assert.equal(readArchive(storage).records.length,1);assert.equal(saved.record.version,'1.5');assert.deepEqual(Object.keys(first.percentages),KEYS);
+ const storage=memory(),first=record(),saved=writeArchive(first,storage);assert.equal(saved.duplicate,false);assert.equal(readArchive(storage).records.length,1);assert.equal(saved.record.version,'1.7');assert.deepEqual(Object.keys(first.percentages),KEYS);
  const duplicate=writeArchive(record(),storage);assert.equal(duplicate.duplicate,true);assert.equal(duplicate.record.id,first.id);assert.equal(readArchive(storage).records.length,1);
  const second=record('test-2');writeArchive(second,storage);assert.equal(readArchive(storage).records.length,2);assert.notEqual(archiveFilename(first),archiveFilename(second));
  const historical=readArchive(storage).records.find(r=>r.id===first.id);assert.equal(historical.kind,'full');assert.equal(historical.snapshot.display.title,profiles.LUCKY.name);assert.equal(historical.snapshot.questions.length,13);assert.ok(historical.snapshot.artwork.LUCKY.length);

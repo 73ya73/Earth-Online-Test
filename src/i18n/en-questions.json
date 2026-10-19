@@ -1,0 +1,150 @@
+{
+  "Q1": {
+    "text": "Q1 What stage of Earth Online are you currently in?",
+    "options": {
+      "A": "A. Tutorial Mode",
+      "B": "B. Main Quest",
+      "C": "C. Open World Free Roam",
+      "D": "D. Major Version Update in Progress"
+    },
+    "sourceRow": 2
+  },
+  "Q2": {
+    "text": "Q2 Which quest best describes your current life game situation?",
+    "options": {
+      "A": "A. Endless Academic Grind",
+      "B": "B. Work-Life Balance Dungeon",
+      "C": "C. Romance Side Quest",
+      "D": "D. Main Quest Missing",
+      "E": "E. Health Debuff Dungeon",
+      "F": "F. Juggling Multiple Quests",
+      "G": "G. Running Smoothly No Major Bugs Detected"
+    },
+    "sourceRow": 8
+  },
+  "Q3": {
+    "text": "Q3. What's your current mental operating mode?",
+    "options": {
+      "A": "A. Low Battery Mode",
+      "B": "B. Too Many Background Processes",
+      "C": "C. Mind-Wandering Mode",
+      "D": "D. Stable Operating Mode"
+    },
+    "sourceRow": 17
+  },
+  "Q4": {
+    "text": "Q4. When your quest suddenly gets harder, what's your next move?",
+    "options": {
+      "A": "A. Face It Head-On",
+      "B": "B. Make a Tactical Retreat",
+      "C": "C. Call for Backup",
+      "D": "D. Activate the Lucky Charm",
+      "E": "E. Mentally Simulate Every Outcome"
+    },
+    "sourceRow": 23
+  },
+  "Q5": {
+    "text": "Q5. When would you want a hint from the universe?",
+    "options": {
+      "A": "A. When I'm at a crossroads in life",
+      "B": "B. When I'm waiting for an important result",
+      "C": "C. When everything seems to be going wrong",
+      "D": "D. Everyday when I log in",
+      "E": "E. Never. Universe Notifications: OFF."
+    },
+    "sourceRow": 30
+  },
+  "Q6": {
+    "text": "Q6. You're waiting for an important result, but the system still says \"Loading...\" What's your next move?",
+    "options": {
+      "A": "A. Keep Refreshing the Progress Bar",
+      "B": "B. Switch Channels to Distract Myself",
+      "C": "C. Join the Party Chat",
+      "D": "D. Change My Profile Picture for Good Luck and Repost a Lucky Message",
+      "E": "E. Mentally Rehearse How I'd Respond to the Result"
+    },
+    "sourceRow": 37
+  },
+  "Q7": {
+    "text": "Q7. The universe is offering you a free buff. Which one would you pick?",
+    "options": {
+      "A": "A. Calm Mind Buff",
+      "B": "B. Luck Boost Buff",
+      "C": "C. Motivation Boost Buff",
+      "D": "D. Instant HP Recovery Buff"
+    },
+    "sourceRow": 44
+  },
+  "Q8": {
+    "text": "Q8. You come across a post saying, \"Claim this good luck and something amazing will happen tomorrow!\" Your fingers react before your brain does. What's your next move?",
+    "options": {
+      "A": "A. Claim the Good Luck",
+      "B": "B. Share the Luck with Everyone",
+      "C": "C. Lurk in the Comments for Entertainment",
+      "D": "D. Save It to My Good Luck Collection",
+      "E": "E. Scroll Past"
+    },
+    "sourceRow": 50
+  },
+  "Q9": {
+    "text": "Q9. Your mental battery is down to 5%. What's your go-to recharge hack?",
+    "options": {
+      "A": "A. Enter Sleep Mode",
+      "B": "B. Recharge with Comfort Food",
+      "C": "C. Call in Your Support Squad",
+      "D": "D. Enjoy Some Alone Time",
+      "E": "E. Activate Lucky Recharge Mode",
+      "F": "F. Analyze the Problem and Find a Solution",
+      "G": "G. Revisit Past Experiences"
+    },
+    "sourceRow": 57
+  },
+  "Q10": {
+    "text": "Q10. After using your signature Recharge Skill, what changes do you notice in your status?",
+    "options": {
+      "A": "A. Emotional HP Restored",
+      "B": "B. Sense of Control Increased",
+      "C": "C. Ready to Take Action Again",
+      "D": "D. Worries Temporarily Muted",
+      "E": "E. No Noticeable Changes",
+      "F": "F. Negative Side Effects Triggered"
+    },
+    "sourceRow": 66
+  },
+  "Q11": {
+    "text": "Q11. If the time you've spent waiting could turn into an in-game item, how would you use it?",
+    "options": {
+      "A": "A. Carry It with Me",
+      "B": "B. Give It a Special Place",
+      "C": "C. Store It in My Phone's Digital Inventory",
+      "D": "D. Share It with Other Players",
+      "E": "E. Keep It as a Collectible",
+      "F": "F. Skip This Feature and Don't Save It"
+    },
+    "sourceRow": 74
+  },
+  "Q12": {
+    "text": "Q12. The news you've been waiting for has finally arrived. Whether it's good or bad, what would you do next?",
+    "options": {
+      "A": "A. Update My Besties",
+      "B": "B. Review My Quest Journey",
+      "C": "C. Take Three Minutes to Process It",
+      "D": "D. Give This Chapter a Proper Goodbye",
+      "E": "E. Start My Next Adventure"
+    },
+    "sourceRow": 82
+  },
+  "Q13": {
+    "text": "Q13. If you could save your Earth Online experiences as game files, what would you want to keep?",
+    "options": {
+      "A": "A. Life Achievements",
+      "B": "B. Lessons Learned Along the Way",
+      "C": "C. Fragments of Emotional Memories",
+      "D": "D. A Gallery of Important People",
+      "E": "E. Voices That Comforted and Encouraged Me",
+      "F": "F. Epic Highlight Moments",
+      "G": "G. Skip Saving and Keep Exploring"
+    },
+    "sourceRow": 89
+  }
+}

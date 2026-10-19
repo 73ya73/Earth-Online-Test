@@ -1,7 +1,7 @@
 // @ts-nocheck -- Generated JavaScript bundle in the Dashboard TypeScript entrypoint.
 // GENERATED for Supabase Dashboard: paste this ENTIRE file into submit-research/index.ts.
 // Source: supabase/functions/submit-research/index.ts and _shared/. No secret values included.
-// Source SHA-256: 4a55d9b616aba46b62a49e5d04097026a73a59c52a786a8d0f27e683b3dfda82
+// Source SHA-256: 542e309ccc8f0de967779925b029ffa847245651abba2984938bbc779e8eae39
 // Regenerate: node scripts/sync-research.mjs && node scripts/bundle-research.mjs
 
 // supabase/functions/_shared/questions.js
@@ -126,7 +126,7 @@ async function readLimited(request) {
     reader.releaseLock();
   }
 }
-function createHandler({ origins: origins2, insert, logger = console, now = () => /* @__PURE__ */ new Date() }) {
+function createHandler({ origins: origins2, insert, logger = console, now = () => /* @__PURE__ */ new Date(), validate = validateSubmission }) {
   let minute = -1, count = 0;
   return async (request) => {
     const origin = request.headers.get("origin"), allowed = origins2.includes(origin);
@@ -146,7 +146,7 @@ function createHandler({ origins: origins2, insert, logger = console, now = () =
     if (Number(request.headers.get("content-length")) > MAX_BYTES) return reply(413, { error: "too_large" });
     let record;
     try {
-      record = validateSubmission(await readLimited(request), now());
+      record = validate(await readLimited(request), now());
     } catch (error) {
       logger.warn?.("[Earth Online] research", { status: "failed", category: "validation", reason: ["invalid_record", "invalid_time", "invalid_questions", "invalid_answers", "invalid_scores", "result_mismatch", "score_mismatch", "too_large", "body_timeout"].includes(error.message) ? error.message : "invalid_body" });
       return reply(error.message === "too_large" ? 413 : 400, { error: "invalid_submission" });

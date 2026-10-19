@@ -10,9 +10,10 @@ const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}
 // Failed payloads remain intact; recovery needs a new visit/network transition AND a cooldown.
 export function createResearchQueue({endpoint,storage,fetcher=(...args)=>globalThis.fetch(...args),logger=console,debug=false,
  now=Date.now,online=()=>globalThis.navigator?.onLine!==false,timeoutMs=15000,maxAttempts=3,
- baseDelayMs=1000,random=Math.random,locks=globalThis.navigator?.locks,onStatus=()=>{}}={}){
+ baseDelayMs=1000,random=Math.random,locks=globalThis.navigator?.locks,onStatus=()=>{},endpointFor}={}){
  if(storage===undefined){try{storage=globalThis.localStorage;}catch{storage=null;}}
  const memory=new Map(),active=new Map(),recoveryTickets=new Map(),listeners=new Set();let timer,stopped=true,lastStatus=null;
+ const destination=payload=>endpointFor?endpointFor(payload):endpoint;
  const notify=()=>{for(const listener of listeners){try{listener();}catch{}}};
  const log=(entry,extra={})=>{const data={submission_id:entry.payload.submission_id,status:entry.status,attempts:entry.attempts,round:entry.round,total_attempts:entry.totalAttempts,http_status:entry.httpStatus||null,duration_ms:entry.durationMs||0,error_category:entry.error||null,...extra};if(debug)logger.debug?.('[Earth Online] research',data);else if(entry.status==='failed')logger.warn?.('[Earth Online] research',data);lastStatus=data;try{onStatus(data);}catch{}notify();};
  function get(key){try{return storage?.getItem(key)||memory.get(key)||null;}catch{return memory.get(key)||null;}}
@@ -41,7 +42,7 @@ export function createResearchQueue({endpoint,storage,fetcher=(...args)=>globalT
  }
  function schedule(){
   clearTimeout(timer);if(stopped||!online())return;
-  const due=entries().filter(e=>!active.has(e.payload.submission_id)&&(e.status==='pending'||(recoveryTickets.get(e.payload.submission_id)===e.round&&canRecover(e)))).map(e=>Math.max(e.status==='failed'?e.nextRecoveryAt||0:e.nextAttemptAt||0,e.inflightUntil||0));
+  const due=entries().filter(e=>destination(e.payload)&&!active.has(e.payload.submission_id)&&(e.status==='pending'||(recoveryTickets.get(e.payload.submission_id)===e.round&&canRecover(e)))).map(e=>Math.max(e.status==='failed'?e.nextRecoveryAt||0:e.nextAttemptAt||0,e.inflightUntil||0));
   if(due.length)timer=setTimeout(()=>void flush(),Math.min(2147483647,Math.max(20,Math.min(...due)-now())));
  }
  async function attempt(id){
@@ -50,7 +51,8 @@ export function createResearchQueue({endpoint,storage,fetcher=(...args)=>globalT
   if(entry.status==='saved'){
    if(put(RECEIPT_PREFIX+id,'sent'))remove(OUTBOX_PREFIX+id);return entry;
   }
-  if(!online())return entry;
+  const targetEndpoint=destination(entry.payload);
+  if(!targetEndpoint||!online())return entry;
   if(entry.status==='failed'){
    if(recoveryTickets.get(id)!==entry.round||!canRecover(entry)||now()<Math.max(entry.nextRecoveryAt||0,entry.inflightUntil||0))return entry;
    recoveryTickets.delete(id);
@@ -62,7 +64,7 @@ export function createResearchQueue({endpoint,storage,fetcher=(...args)=>globalT
   let httpStatus=null,error,retry=false,retryAfter=0,timeout;
   try{
    const controller=new AbortController();timeout=setTimeout(()=>controller.abort(),timeoutMs);
-   const response=await fetcher(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(entry.payload),credentials:'omit',referrerPolicy:'no-referrer',signal:controller.signal});
+   const response=await fetcher(targetEndpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(entry.payload),credentials:'omit',referrerPolicy:'no-referrer',signal:controller.signal});
    httpStatus=response.status;
    if(!response.ok){
     retry=RETRY_HTTP.includes(httpStatus);
@@ -89,7 +91,7 @@ export function createResearchQueue({endpoint,storage,fetcher=(...args)=>globalT
   if(active.has(id))return active.get(id);
   const task=Promise.resolve().then(()=>locks?.request?locks.request('earth-research:'+id,{ifAvailable:true},lock=>lock?attempt(id):undefined):attempt(id)).catch(()=>{logger.warn?.('[Earth Online] research queue_error');}).finally(()=>{active.delete(id);schedule();});active.set(id,task);return task;
  }
- async function flush(){if(!endpoint)return [];try{return await Promise.all(entries().filter(e=>e.status==='pending'||e.status==='saved'||(recoveryTickets.get(e.payload.submission_id)===e.round&&canRecover(e))).map(e=>send(e.payload.submission_id)));}finally{schedule();}}
+ async function flush(){if(!endpoint&&!endpointFor)return [];try{return await Promise.all(entries().filter(e=>e.status==='pending'||e.status==='saved'||(recoveryTickets.get(e.payload.submission_id)===e.round&&canRecover(e))).map(e=>send(e.payload.submission_id)));}finally{schedule();}}
  function recover(payload){if(payload)enqueue(payload);const records=entries();for(const entry of records)if(canRecover(entry))recoveryTickets.set(entry.payload.submission_id,entry.round);notify();return records;}
  function start(target=globalThis.window){
   stopped=false;let wasOnline=online();

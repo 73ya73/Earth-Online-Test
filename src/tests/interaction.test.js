@@ -80,7 +80,7 @@ test('XP result still supports PNG download, native sharing, copy link and score
 });
 test('welcome reveals no personality names; legacy and incompatible saved answers are ignored',async()=>{
  const old=JSON.stringify({version:1,answers:{Q2:'F',Q12:'E'},index:12,page:'result'});
- for(const legacy of [false,true]){const dom=await setup(old,legacy);const d=dom.window.document;assert.equal(d.body.textContent.includes('6 UNKNOWN MODULES DETECTED'),true);for(const p of Object.values(personas))assert.equal(d.body.textContent.includes(p.name),false);assert.equal([...d.querySelectorAll('button')].some(b=>b.textContent.includes('继续上次')),false);await click(dom,button(dom,'Start Setup'));assert.equal(d.querySelectorAll('input:checked').length,0);dom.window.close();}
+ for(const legacy of [false,true]){const dom=await setup(old,legacy);const d=dom.window.document;assert.equal(d.body.textContent.includes('8 种可能结果，解锁你的精神回血方式'),true);for(const p of Object.values(personas))assert.equal(d.body.textContent.includes(p.name),false);assert.equal([...d.querySelectorAll('button')].some(b=>b.textContent.includes('继续上次')),false);await click(dom,button(dom,'Start Setup'));assert.equal(d.querySelectorAll('input:checked').length,0);dom.window.close();}
 });
 test('all six unique results render correct artwork, support text, history, reading, and scoring',async()=>{
  for(const key of Object.keys(personas)){

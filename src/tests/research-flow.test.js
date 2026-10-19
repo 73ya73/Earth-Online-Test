@@ -80,3 +80,54 @@ test('legacy attempted record resumes automatically, old sent marker does not re
   const enabled=dom.window.document.querySelector('.intro .setup-note').textContent.includes('系统会自动记录');await delay(40);assert.equal(calls,enabled&&marker==='attempted'?1:0);dom.window.close();
  }
 });
+
+test('welcome title, tab title and eight-result footer follow the selected language without uploads',async()=>{
+ let calls=0;const dom=await boot({},async()=>{calls++;throw Error('welcome must not upload');}),w=dom.window;
+ try{
+  assert.equal(w.document.querySelector('.intro h1').textContent,'测测你的精神回血机制');
+  assert.equal(w.document.querySelector('.unknown-modules > span').textContent,'8 种可能结果，解锁你的精神回血方式');
+  assert.equal(w.document.title,'测测你的精神回血机制 · Earth Online');
+  w.document.querySelector('.language-switch button[lang="en"]').click();await delay(35);
+  assert.equal(w.document.querySelector('.intro h1').textContent,"What's Your Mental Recharge Mode?");
+  assert.equal(w.document.title,"What's Your Mental Recharge Mode? · Earth Online");
+  assert.equal(w.document.querySelector('.unknown-modules > span').textContent,'8 Possible Results · Find Your Recharge Mode');
+  assert.equal(w.document.querySelector('.lead').textContent,'When life drains your HP,how do you recharge?');
+  assert.ok(!w.document.body.textContent.includes('Discover Your Recharge Style'));
+  w.document.querySelector('.language-switch button[lang="zh-CN"]').click();await delay(30);
+  assert.equal(w.document.querySelector('.intro h1').textContent,'测测你的精神回血机制');
+  assert.equal(w.document.querySelector('.unknown-modules > span').textContent,'8 种可能结果，解锁你的精神回血方式');assert.equal(calls,0);
+ }finally{w.close();}
+});
+
+test('language switches preserve answer IDs and do not create duplicate submissions',async()=>{
+ const posts=[],dom=await boot(pending(),async(_u,o)=>{const p=JSON.parse(o.body);posts.push(p);return {ok:true,status:200,json:async()=>({ok:true,submission_id:p.submission_id,status:'inserted'})};}),w=dom.window;
+ w.document.querySelector('.language-switch button[lang="en"]').click();await delay(35);
+ assert.match(w.document.querySelector('.welcome').textContent,/What's Your Mental Recharge Mode\?/);assert.equal(w.document.documentElement.lang,'en');
+ button(w,'Resume your').click();await delay(25);assert.match(w.document.getElementById('page-title').textContent,/If you could save your Earth Online experiences/);
+ w.document.querySelector('input[value="A"]').click();await delay(25);
+ const ids=JSON.parse(w.localStorage.getItem('earth-recharge-v1.5')).answers;
+ w.document.querySelector('.language-switch button[lang="zh-CN"]').click();await delay(25);
+ assert.deepEqual(JSON.parse(w.localStorage.getItem('earth-recharge-v1.5')).answers,ids);assert.equal(w.document.querySelector('input[value="A"]').checked,true);
+ w.document.querySelector('.language-switch button[lang="en"]').click();await delay(25);button(w,'View My Recharge Profile').click();await delay(850);
+ assert.ok(w.document.querySelector('.results'));assert.ok(w.document.querySelector('.results').textContent.includes('Save Result Image'));
+ assert.equal(posts.length,1);assert.equal(posts[0].answers.Q13[0],'A');
+ for(const language of ['zh-CN','en']){w.document.querySelector('.language-switch button[lang="'+language+'"]').click();await delay(25);}assert.equal(posts.length,1);
+ const body=w.document.body.textContent.replaceAll('中文','');assert.doesNotMatch(body,/[\u3400-\u9fff]/);
+ button(w,'Save to My Saves').click();await delay(30);assert.match(w.document.body.textContent,/Save Complete/);w.close();
+});
+
+test('stored English locale reopens welcome in English without resetting existing answers',async()=>{
+ const seed={...pending(),'earth-recharge-locale':'en'},dom=await boot(seed),w=dom.window;
+ assert.equal(w.document.documentElement.lang,'en');assert.match(w.document.querySelector('.welcome').textContent,/What's Your Mental Recharge Mode\?/);
+ button(w,'Resume your').click();await delay(25);assert.match(w.document.getElementById('page-title').textContent,/Q13/);assert.equal(Object.keys(JSON.parse(w.localStorage.getItem('earth-recharge-v1.5')).answers).length,12);w.close();
+});
+
+test('completed candidate session keeps original algorithm after reopening with production preview disabled',async()=>{
+ const {createV17Submission}=await import('../utils/research-v17.js');
+ const fixtures=JSON.parse(fs.readFileSync(new URL('../../reports/v1.7-fixtures.json',import.meta.url),'utf8'));
+ const answers=fixtures.MULTI,payload=createV17Submission(questions,answers,'en');let calls=0;
+ const seed={'earth-recharge-locale':'en','earth-recharge-v1.5':JSON.stringify({version:'1.5',answers,index:12,page:'result',researchSubmission:payload,algorithmVersion:payload.algorithm_version,completedAt:payload.submitted_at})};
+ const dom=await boot(seed,async()=>{calls++;throw Error('must not send candidate to legacy endpoint');}),w=dom.window;
+ button(w,'Resume your result').click();await delay(50);assert.equal(w.document.querySelector('.result-hero h1').textContent,'Multi-Recharge');assert.equal(calls,0);
+ const records=Object.keys(snapshot(w)).filter(k=>k.startsWith('earth-recharge-outbox-v2:')).map(k=>JSON.parse(w.localStorage.getItem(k)));assert.equal(records.length,1);assert.equal(records[0].payload.submission_id,payload.submission_id);assert.equal(records[0].attempts,0);w.close();
+});

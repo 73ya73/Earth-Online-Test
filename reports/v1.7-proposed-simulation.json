@@ -1,0 +1,63 @@
+{
+  "seed": 20261019,
+  "count": 10000,
+  "config": {
+    "version": "pilot-1.7-raw-v1",
+    "calibrated": false,
+    "minRaw": 3,
+    "minEvidence": 2,
+    "multiGap": 1
+  },
+  "counts": {
+    "ACT": 631,
+    "RESET": 970,
+    "SOCIAL": 1069,
+    "LUCKY": 1900,
+    "THINK": 635,
+    "SAVE": 345,
+    "EXPLORING": 2007,
+    "MULTI": 2443
+  },
+  "percent": {
+    "ACT": 6.31,
+    "RESET": 9.7,
+    "SOCIAL": 10.69,
+    "LUCKY": 19,
+    "THINK": 6.35,
+    "SAVE": 3.45,
+    "EXPLORING": 20.07,
+    "MULTI": 24.43
+  },
+  "exactTie": 3189,
+  "threePlus": 288,
+  "lowScore": 2007,
+  "lowEvidence": 1929,
+  "legacyMulti": 1389,
+  "theory": {
+    "ACT": {
+      "max": 5,
+      "questions": 3
+    },
+    "RESET": {
+      "max": 6,
+      "questions": 4
+    },
+    "SOCIAL": {
+      "max": 8,
+      "questions": 4
+    },
+    "LUCKY": {
+      "max": 8,
+      "questions": 4
+    },
+    "THINK": {
+      "max": 6,
+      "questions": 3
+    },
+    "SAVE": {
+      "max": 5,
+      "questions": 3
+    }
+  },
+  "warning": "Uniform legal selections, not population prevalence. Raw-score thresholds favor mechanisms with more scoring opportunities; weights unchanged. Pending approval; not active in production."
+}

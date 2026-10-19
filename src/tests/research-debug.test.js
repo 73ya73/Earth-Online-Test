@@ -24,7 +24,7 @@ test('development panel is read-only and displays only safe summary fields',()=>
 
 test('production artifacts contain no debug panel markup or module; main loads it only under DEV',()=>{
  const main=fs.readFileSync(new URL('../main.tsx',import.meta.url),'utf8');
- assert.match(main,/if\(import\.meta\.env\.DEV\)\{\s*void import\('\.\/components\/ResearchDebugPanel'\)/);
+ assert.match(main,/if\s*\(import\.meta\.env\.DEV\)\s*\{\s*void import\('\.\/components\/ResearchDebugPanel'\)/);
  const assets=new URL('../../dist/assets/',import.meta.url);
  for(const name of fs.readdirSync(assets)){
   assert.ok(!name.includes('ResearchDebugPanel'));

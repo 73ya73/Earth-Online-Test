@@ -10,7 +10,7 @@ async function readLimited(request){
  const bytes=new Uint8Array(total);let at=0;for(const c of chunks){bytes.set(c,at);at+=c.length;}return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));
  }finally{clearTimeout(timer);reader.releaseLock();}
 }
-export function createHandler({origins,insert,logger=console,now=()=>new Date()}){
+export function createHandler({origins,insert,logger=console,now=()=>new Date(),validate=validateSubmission}){
  // Per-isolate early cap also limits malformed requests; database cap is global.
  let minute=-1,count=0;
  return async request=>{
@@ -25,7 +25,7 @@ export function createHandler({origins,insert,logger=console,now=()=>new Date()}
   if(!/^application\/json(?:\s*;|$)/i.test(request.headers.get('content-type')||''))return reply(415,{error:'json_required'});
   if(Number(request.headers.get('content-length'))>MAX_BYTES)return reply(413,{error:'too_large'});
   let record;
-  try{record=validateSubmission(await readLimited(request),now());}catch(error){logger.warn?.('[Earth Online] research', {status:'failed',category:'validation',reason:['invalid_record','invalid_time','invalid_questions','invalid_answers','invalid_scores','result_mismatch','score_mismatch','too_large','body_timeout'].includes(error.message)?error.message:'invalid_body'});return reply(error.message==='too_large'?413:400,{error:'invalid_submission'});}
+  try{record=validate(await readLimited(request),now());}catch(error){logger.warn?.('[Earth Online] research', {status:'failed',category:'validation',reason:['invalid_record','invalid_time','invalid_questions','invalid_answers','invalid_scores','result_mismatch','score_mismatch','too_large','body_timeout'].includes(error.message)?error.message:'invalid_body'});return reply(error.message==='too_large'?413:400,{error:'invalid_submission'});}
   const started=Date.now();
   const diagnostic=(status,category,extra={})=>({submission_id:record.submission_id,status,category,duration_ms:Date.now()-started,...extra});
   try{
