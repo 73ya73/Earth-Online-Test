@@ -4,6 +4,12 @@ import {createResearchQueue} from './utils/researchQueue.js';
 import './research.css';
 const research=researchConfig(import.meta.env);
 const researchQueue=createResearchQueue({endpoint:research.endpoint,debug:import.meta.env.DEV});
+if(import.meta.env.DEV){
+ void import('./components/ResearchDebugPanel').then(({ResearchDebugPanel})=>{
+  const host=document.createElement('div');document.body.appendChild(host);
+  createRoot(host).render(<ResearchDebugPanel queue={researchQueue}/>);
+ });
+}
 import {createRoot} from 'react-dom/client';
 import questions from './data/questions.json';
 import {SavesWindow,SaveComplete,LegacySave} from './components/SavesWindow';

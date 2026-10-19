@@ -999,7 +999,7 @@
   },
   {
     "questionId": "Q11",
-    "text": "Q11 如果「等待进度」可以生成专属的可视化道具，你会如何使用它？",
+    "text": "Q11 如果『等待进度』可以转化成可视化道具，你会如何使用它？",
     "scoringEnabled": false,
     "answerNature": "情境,行为,态度",
     "selectionMode": "single",
