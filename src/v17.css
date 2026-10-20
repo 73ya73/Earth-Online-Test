@@ -19,3 +19,9 @@ html[lang=en] .profile-tabs small{display:none}
 .exploration-directions li p,.exploration-tie{margin:5px 0 8px}
 .exploration-directions>small{display:block;color:#66788b;font-size:10px;margin-top:6px}
 @media(max-width:600px){.exploration-directions ul{grid-template-columns:1fr}.exploration-directions{padding:10px 11px}}
+.results-exploring #panel-general{grid-template-columns:minmax(0,1fr)}
+.results-exploring #panel-general .result-hero{grid-template-columns:minmax(0,1fr) 128px;align-items:center}
+.exploration-try p{margin:0 0 5px;line-height:1.8}
+.exploration-try small{font-size:11px;color:#66788b}
+.recharge-clues+.exploration-try{margin-top:12px;padding-top:10px;border-top:1px solid #c8d4e3}
+@media(max-width:600px){.results-exploring #panel-general .result-hero{grid-template-columns:minmax(0,1fr) 80px}.results-exploring #panel-general .result-hero .large{width:80px;height:80px}}

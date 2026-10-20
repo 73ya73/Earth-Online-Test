@@ -11,7 +11,7 @@ import './research.css';
 const research = researchConfig(import.meta.env);
 const previewV17=import.meta.env.DEV&&import.meta.env.VITE_PREVIEW_V17==='true';
 const researchV17=researchConfig({VITE_RESEARCH_ENABLED:import.meta.env.VITE_RESEARCH_ENABLED,VITE_RESEARCH_FUNCTION_URL:import.meta.env.VITE_RESEARCH_V17_FUNCTION_URL});
-const researchQueue = createResearchQueue({ endpoint: research.endpoint, debug: import.meta.env.DEV,endpointFor:payload=>payload.algorithm_version?researchV17.endpoint:research.endpoint });
+const researchQueue = createResearchQueue({ endpoint: research.endpoint, debug: import.meta.env.DEV,endpointFor:payload=>payload.algorithm_version===V17_CONFIG.version?researchV17.endpoint:payload.algorithm_version?'':research.endpoint });
 if (import.meta.env.DEV) {
     void import('./components/ResearchDebugPanel').then(({ ResearchDebugPanel }) => {
         const host = document.createElement('div');

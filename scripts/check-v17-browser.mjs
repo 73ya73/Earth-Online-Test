@@ -9,8 +9,8 @@ try{
  for(const scenario of [
   {name:'production-mobile',url:'http://127.0.0.1:5187/Earth-Online-Test/',fixture:'ACT',preview:false},
   {name:'candidate-multi-mobile',url:'http://127.0.0.1:5188/',fixture:'threePlus',preview:true,title:'Multi-Recharge'},
-  {name:'candidate-exploring-mobile',url:'http://127.0.0.1:5188/',fixture:'EXPLORING',preview:true,title:'Exploring Your Recharge Style'},
-  {name:'candidate-exploring-desktop',url:'http://127.0.0.1:5188/',fixture:'EXPLORING',preview:true,title:'Exploring Your Recharge Style'}
+  {name:'candidate-exploring-mobile',url:'http://127.0.0.1:5188/',fixture:'EXPLORING',preview:true,title:'Exploring Your Recharge Mode'},
+  {name:'candidate-exploring-desktop',url:'http://127.0.0.1:5188/',fixture:'EXPLORING',preview:true,title:'Exploring Your Recharge Mode'}
  ]){
   const context=await browser.newContext({viewport:scenario.name.includes('mobile')?{width:375,height:812}:{width:1280,height:900}}),posts=[],errors=[];
   await context.route('**/*',async route=>{
@@ -65,13 +65,13 @@ try{
   assert.deepEqual(await page.locator('.attribute-row output').allTextContents(),before);
   assert.deepEqual(await page.locator('.attribute-row > span').allTextContents(),labels);
   if(scenario.fixture==='EXPLORING'){
-   assert.equal(await page.locator('.quote').innerText(),'Your recharge style is still taking shape.');
-   assert.equal(await page.locator('.exploration-body').innerText(),"Your answers suggest a few possible directions to explore, but there isn't enough evidence yet to identify one main recharge style.");
+   assert.equal(await page.locator('.quote').innerText(),'Your answers offer a few recharge clues.');
+   assert.equal(await page.locator('.exploration-body').innerText(),"There isn't enough evidence for one main recharge mode yet, but these clues can help you choose a small thing to try.");
    assert.equal(await page.locator('.exploration-directions').count(),1);
    assert.ok(await page.locator('.exploration-directions li').count()<=2);
    await page.locator('.language-switch button[lang="zh-CN"]').click();
-   assert.equal(await page.locator('.quote').innerText(),'你的精神系统还没有固定的回血配方。');
-   assert.equal(await page.locator('.exploration-directions h2').innerText(),'可以继续探索的方向');
+   assert.equal(await page.locator('.quote').innerText(),'你的回答已经留下了一些回血线索。');
+   assert.equal(await page.locator('.recharge-clues h2').innerText(),'你的回血线索');
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,'Chinese exploration must fit viewport');
    await page.locator('.language-switch button[lang="en"]').click();
   }else assert.equal(await page.locator('.exploration-directions').count(),0);

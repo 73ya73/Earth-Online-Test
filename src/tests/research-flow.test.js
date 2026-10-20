@@ -131,3 +131,17 @@ test('completed candidate session keeps original algorithm after reopening with 
  button(w,'Resume your result').click();await delay(50);assert.equal(w.document.querySelector('.result-hero h1').textContent,'Multi-Recharge');assert.equal(calls,0);
  const records=Object.keys(snapshot(w)).filter(k=>k.startsWith('earth-recharge-outbox-v2:')).map(k=>JSON.parse(w.localStorage.getItem(k)));assert.equal(records.length,1);assert.equal(records[0].payload.submission_id,payload.submission_id);assert.equal(records[0].attempts,0);w.close();
 });
+
+test('retired local preview progress stays intact and its pending payload is never uploaded or reclassified',async()=>{
+ const answers=Object.fromEntries(questions.map(q=>[q.questionId,['A']]));
+ const payload={submission_id:'12345678-1234-4234-8234-123456789abc',submitted_at:new Date().toISOString(),answers,scores:{ACT:99},result_type:['ACT'],algorithm_version:'retired-local-preview'};
+ const progress=JSON.stringify({version:'1.5',answers,index:12,page:'result',algorithmVersion:payload.algorithm_version,researchSubmission:payload});
+ const key='earth-recharge-outbox-v2:'+payload.submission_id;
+ const entry=JSON.stringify({payload,status:'pending',queueVersion:3,round:1,attempts:0,totalAttempts:0,retryable:false,nextAttemptAt:0,inflightUntil:0});
+ let calls=0;const dom=await boot({'earth-recharge-v1.5':progress,[key]:entry},async()=>{calls++;throw Error('retired record must remain local');}),w=dom.window;
+ try{
+  await delay(35);assert.equal(calls,0);assert.equal(w.document.querySelector('.results'),null);
+  assert.equal([...w.document.querySelectorAll('button')].some(b=>b.textContent.includes('继续上次')),false);
+  assert.equal(w.localStorage.getItem('earth-recharge-v1.5'),progress);assert.equal(w.localStorage.getItem(key),entry);
+ }finally{w.close();}
+});
